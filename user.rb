@@ -8,9 +8,6 @@ module User
           user = @db.execute "SELECT Email FROM Users WHERE Email = '"+email+"'"                #search for an email given in the form
           user_password = @db.execute "SELECT Password FROM Users WHERE Email = '"+email+"'"    #search for password assigned to a given email
           password = @db.execute "SELECT Password FROM Users WHERE Password = '"+pass+"'"       #search for a password given in the form
-          puts user
-          puts user_password
-          puts password
           if !user.empty? && !password.empty? && user_password == password
              verified = true
           end
