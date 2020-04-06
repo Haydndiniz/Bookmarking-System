@@ -6,7 +6,7 @@ require_relative 'app/main.rb'
 require_relative 'app/login.rb'
 
 require_relative 'models/user.rb'
-require_relative 'models/bookmarks.rb'
+# require_relative 'models/bookmarks.rb'
 
 
 
