@@ -4,9 +4,10 @@ get '/' do
 end
 
 get '/index' do
-  
-	erb :index
+      
+       erb :index 
 end
+    
 
 
 
