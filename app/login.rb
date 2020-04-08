@@ -7,7 +7,7 @@ end
 
 #get logout request and redirect to index page
 get '/logout' do
-  	session[:loggedin] = nil
+  	session.clear
   	redirect '/index'
 end
 
@@ -15,9 +15,9 @@ post '/login' do
     session.clear
     @email = params[:email]
     @pass = params[:password]
-    verified_user = User.find_user(@email, @pass)
+    session[:logged_in] = User.find_user(@email, @pass)
    
-    if verified_user
+    if session[:logged_in]
         session[:email] = params[:email]
         redirect '/index'
     else
