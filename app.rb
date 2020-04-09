@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
+require 'bcrypt'
 
 require_relative 'app/main.rb'
 require_relative 'app/login.rb'
@@ -19,5 +20,5 @@ include ERB::Util #Ensure ERB is enabled
 configure do
 	enable :sessions
     set :session_secret, 'super secret'
-    $db = SQLite3::Database.new './database.sqlite'  
+    $db = SQLite3::Database.new './database.sqlite' 
 end
