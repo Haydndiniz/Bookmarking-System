@@ -19,6 +19,7 @@ include ERB::Util #Ensure ERB is enabled
 
 configure do
 	enable :sessions
-    set :session_secret, 'super secret'
-    $db = SQLite3::Database.new './database.sqlite' 
+    set :session_secret, 'super secret' 
+    DATABASE = './database_encrypted_passwords.sqlite'
+    $db = SQLite3::Database.new DATABASE
 end

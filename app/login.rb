@@ -6,7 +6,9 @@ end
 
 
 #get logout request and redirect to index page
-get '/logout' do
+get '/logout' do 
+    query = "UPDATE users SET active_status = 0 WHERE email = ?;"  #set active status to 0 after logout
+    $db.execute query, session[:email]                            
   	session.clear
   	redirect '/index'
 end
@@ -19,19 +21,21 @@ post '/login' do
    
     if session[:logged_in]
         session[:email] = params[:email]
+        query = "UPDATE users SET active_status = 1 WHERE email = ?;"  #set active status to 1 after log in
+        $db.execute query, session[:email]
         redirect '/index'
     else
         erb :login
     end
 end
 
-get '/logged' do
-    @user_email = session[:email]
-    if @user_email
-       erb :logged 
-    else
-        redirect '/'
-    end
-end
+#get '/logged' do
+    #@user_email = session[:email]
+    #if @user_email
+       #erb :logged 
+    #else
+        #redirect '/'
+    #end
+#end
 
 
