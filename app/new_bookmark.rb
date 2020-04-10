@@ -4,7 +4,8 @@ require 'sinatra/cookies'
 set :bind, '0.0.0.0'
 enable :sessions
 
-get '/' do
+get '/new_bookmark' do
+    redirect '/new_bookmark' if session[:logged_in]
     erb :new_bookmark
 end
 

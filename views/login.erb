@@ -1,3 +1,5 @@
+<!-- login.erb -->
+
 <!DOCTYPE html>
 <html>
 
@@ -12,11 +14,12 @@
 </head>
 <body>  
   <!--navigation bar-->
-    <%if session[:loggedin] %>
+    <%if session[:logged_in] %>
         <nav class="sticky"><%= erb :user_header %></nav>
     <% else %>
         <nav class="sticky"><%= erb :home_header %></nav>
     <% end %>
+    
     <div class="login-dark">
         <form method="post">
             <h2 class="sr-only">Login Form</h2>
