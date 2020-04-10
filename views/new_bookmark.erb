@@ -11,10 +11,10 @@
     <body>
         <form name="new_bookmark_form" action="/new_bookmark" method="post">
             <label for="name_of_bookmark">Name of Bookmark:</label>
-            <input type="text" name="name_of_bookmark" value="<%= @name_of_bookmark %>" maxlength="40" size="40" required> <br>
+            <input type="text" name="name_of_bookmark" value="<%= @bookmark_name %>" maxlength="40" size="40" required> <br>
             
             <label for="link">Link:</label>
-            <input type="link" name="link" value="<%= @link %>" maxlength="60" size="40" required> <br><br>
+            <input type="link" name="Link" value="<%= @link %>" maxlength="60" size="40" required> <br><br>
             
             <label for="description">Description of Bookmark:</label> <br>
             <textarea name="description" rows="5" cols="50" value="<%= @description %>" placeholder="Type your description here.." required></textarea>
