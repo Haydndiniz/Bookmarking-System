@@ -18,9 +18,11 @@ post '/login' do
     @email = params[:email]
     @pass = params[:password]
     session[:logged_in] = User.find_user(@email, @pass)
+    puts session[:logged_in]
    
     if session[:logged_in]
         session[:email] = params[:email]
+        puts session[:email]
         query = "UPDATE users SET active_status = 1 WHERE email = ?;"  #set active status to 1 after log in
         $db.execute query, session[:email]
         redirect '/index'
