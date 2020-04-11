@@ -1,0 +1,9 @@
+user_id,first_name,last_name,password,email,active_status,admin
+1,John,Smith,$2a$12$l5kJ4GY8Tjs1OafYrH57keHITE1lYtQKKLo7jrVgippgX5HZBqQe2,john.smith12@intranet.com,0,0
+2,Adh,Mynn,$2a$12$.tWAdevg3fc3R6ts1IKPluI/t7rhtsTcZLCa1lDI2xzKAVyBZhf1a,adh.mynn@intranet.com,0,0
+3,Bob,Bob,$2a$12$L/RL.8vf0YYGgCM45.bgnOLYTL48x9G.0dom1xhYpMNPpKLKwaZTC,bob.bob@intranet.com,0,0
+4,Worker,McGee,$2a$12$1Ns6.Eb/E3MaEntBbh0PK.uL.7uFVN/R/DNKUMjQs5n3YOJtFjfom,contractor.worker.mcgee@intranet.com,0,0
+5,Dave,Baker,$2a$12$InpL8KeZW9W9Bzrf/SmVMeUtvZz8564te4xZhUTq0UM3Rn98nWn7S,dave.baker@intranet.com,0,0
+6,Karen,Green,$2a$12$Dhn9gbSQ03cGt0YADsDvMeNh.4yO.GqhRP63fcCxDxVHxoEr8U8gu,karen.green@intranet.com,0,0
+7,test,test,$2a$12$NOwjDBlY.u9R9H9hEi7zMeYCFQWzVcHJJEfYLsgE38NKFlcOhGK.e,test@gmail.com,0,0
+8,Encrypted,User,$2a$12$l2yHTuMOgHXmAT2qm3JAke/crMhUUisov6o/qxlH3WP81OQAOIsRe,encrypted@user.com,0,0

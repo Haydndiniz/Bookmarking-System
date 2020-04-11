@@ -4,6 +4,7 @@ get '/' do
 end
 
 get '/index' do
+            puts session[:name]
        erb :index 
 end
     
