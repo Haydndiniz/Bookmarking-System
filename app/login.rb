@@ -6,9 +6,7 @@ end
 
 
 #get logout request and redirect to index page
-get '/logout' do 
-    query = "UPDATE users SET active_status = 0 WHERE email = ?;"  #set active status to 0 after logout
-    $db.execute query, session[:email]                            
+get '/logout' do                       
   	session.clear
   	redirect '/index'
 end
