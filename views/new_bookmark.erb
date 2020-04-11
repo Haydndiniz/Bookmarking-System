@@ -3,13 +3,24 @@
     
     <head>
         <meta charset="utf-8">
-
-        <link rel="stylesheet" href="/css/new_bookmark.css">
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>New Bookmark - ACME</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/home_footer.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+        <link rel="stylesheet" href="css/new_bookmark.css">
     </head>
     
     <body>
-        <form name="new_bookmark_form" action="/new_bookmark" method="post">
+        <!--navigation bar-->
+        <%if session[:logged_in] %>
+            <nav class="sticky"><%= erb :user_header %></nav>
+        <% else %>
+            <nav class="sticky"><%= erb :home_header %></nav>
+        <% end %>
+        
+        <!--BODY-->
+        <form name="new_bookmark" action="/addBookmark" method="post">
             <label for="name_of_bookmark">Name of Bookmark:</label>
             <input type="text" name="name_of_bookmark" value="<%= @bookmark_name %>" maxlength="40" size="40" required> <br>
             
@@ -24,5 +35,15 @@
               <input type="reset">
             </p>
         </form>
+        
+        <!--footer-->
+    <footer>
+    <%= erb :home_footer %>
+    </footer>
+ 
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="assets/js/script.min.js"></script>
     </body>
 </html>

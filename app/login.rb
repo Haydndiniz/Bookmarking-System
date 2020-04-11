@@ -17,27 +17,24 @@ post '/login' do
     session.clear
     @email = params[:email]
     @pass = params[:password]
-    session[:logged_in] = User.find_user(@email, @pass)
-    puts session[:logged_in]
-   
-    if session[:logged_in]
+    @userFound = User.find_user(@email, @pass)
+    puts @userFound
+
+    #Gather all user data
+    query = "SELECT * FROM users WHERE email = ?;"
+    @userInfo = $db.execute query, @email 
+    @active = @userInfo[0][5]
+    
+    if @active && @userFound
+        session[:logged_in] = true
         session[:email] = params[:email]
         puts session[:email]
-        query = "UPDATE users SET active_status = 1 WHERE email = ?;"  #set active status to 1 after log in
-        $db.execute query, session[:email]
+         session[:user_id] = @userInfo[0][0]
+         session[:name] = @userInfo[0][1]
+        puts session[:name]
         redirect '/index'
-    else
-        erb :login
+#     else
+#         session[:logged_in] = false
+#         erb :login
     end
 end
-
-#get '/logged' do
-    #@user_email = session[:email]
-    #if @user_email
-       #erb :logged 
-    #else
-        #redirect '/'
-    #end
-#end
-
-
