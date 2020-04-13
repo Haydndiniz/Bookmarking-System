@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Feedback - ACME</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/home_footer.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+        <link rel="stylesheet" href="css/feedback.css">
+    </head>
+    
+    <body>
+        <!--navigation bar-->
+        <%if session[:logged_in] %>
+            <nav class="sticky"><%= erb :user_header %></nav>
+        <% else %>
+            <nav class="sticky"><%= erb :home_header %></nav>
+        <% end %>
+        
+        <!--BODY-->
+        <form action="/sendFeedback" method="post">
+            <!--<input class="feedback" type="text" value="<%= @bookmark_name %>" maxlength="40" size="40" placeholder="Bookmark Name" required> <br>-->
+            
+            <textarea name="feedback" value="<%= @feedback %>" class="feedback" rows="5" cols="50" placeholder="Type your feedback here.." required></textarea>
+            
+            <p>
+              <button>Submit</button>
+              <input type="reset">
+            </p>
+        </form>
+        
+        <!--footer-->
+        <footer>
+        <%= erb :home_footer %>
+        </footer>
+ 
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="assets/js/script.min.js"></script>
+    </body>
+</html>

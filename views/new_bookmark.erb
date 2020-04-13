@@ -20,30 +20,28 @@
         <% end %>
         
         <!--BODY-->
-        <form name="new_bookmark" action="/addBookmark" method="post">
-            <label for="name_of_bookmark">Name of Bookmark:</label>
-            <input type="text" name="name_of_bookmark" value="<%= @bookmark_name %>" maxlength="40" size="40" required> <br>
-            
-            <label for="link">Link:</label>
-            <input type="link" name="Link" value="<%= @link %>" maxlength="60" size="40" required> <br><br>
-            
-            <label for="description">Description of Bookmark:</label> <br>
-            <textarea name="description" rows="5" cols="50" value="<%= @description %>" placeholder="Type your description here.." required></textarea>
+        <form action="/addBookmark" method="post">
+            <input class="new_bookmark" type="text" name="bookmark_name" maxlength="40" size="40" placeholder="Bookmark Name" required>
+            <br><br>
+            <input class="new_bookmark" type="link" name="link" maxlength="60" size="40" placeholder="Link" required>            
+            <br><br>
+            <textarea class="new_bookmark" name="description" rows="5" cols="50" placeholder="Description" required></textarea>  
+            <br>
             
             <p>
               <button>Submit</button>
-              <input type="reset">
+              <button><a href="/index">Cancel</a></button>
             </p>
         </form>
         
         <!--footer-->
-    <footer>
-    <%= erb :home_footer %>
-    </footer>
+        <footer>
+        <%= erb :home_footer %>
+        </footer>
  
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="assets/js/script.min.js"></script>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="assets/js/script.min.js"></script>
     </body>
 </html>

@@ -6,6 +6,7 @@ require 'bcrypt'
 require_relative 'app/main.rb'
 require_relative 'app/login.rb'
 require_relative 'app/new_bookmark.rb'
+require_relative 'app/feedback.rb'
 
 require_relative 'models/user.rb'
 require_relative 'models/bookmarks.rb'

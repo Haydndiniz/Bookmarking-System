@@ -1,12 +1,18 @@
-body {
-    font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
-    width: 100%;
-    padding: 0px;
+.new_bookmark_form {
+    margin: 500px;
+    width:80%;
+    padding:20px;
+    margin: 100px 80px 80px 80px;
+    background-color:#1e2833;
+    border-radius:4px;
+    color:#fff;
+    box-shadow:3px 3px 4px rgba(0,0,0,.2);
+    text-align:center;
 }
 
-form {
-    background-color: rgb(211,211,211);
-    margin: 5% 500px 5% 5%;
-    padding: 5% 100px 5% 100px;
-    border-radius:10px;
+.new_bookmark_body { 
+    height:1000px;
+    background:url(../images/star-sky.jpg) #475d62;
+    background-size:cover;
+    position:relative;
 }
