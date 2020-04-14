@@ -8,13 +8,12 @@ post '/sendFeedback' do
 
     #get the date and time
     time = Time.new
-    @date_time = time.day.to_s + "/" + time.month.to_s + "/" +  time.year.to_s + " " + time.hour.to_s + ":" + time.min.to_s
+    @date_time = time.strftime("%Y%m%d") + time.strftime("%k").tr(" ", "0") + time.strftime("%M")
     
     @feedback = params[:feedback]
     
     send_feedback = "INSERT INTO feedback (user_id, date_time, feedback) VALUES (?,?,?)"
     $db.execute send_feedback, session[:user_id],  @date_time, params[:feedback]
 
-    puts params
     redirect '/'
 end
