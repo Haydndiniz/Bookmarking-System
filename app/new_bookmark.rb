@@ -8,8 +8,8 @@ post '/addBookmark' do
     
     time = Time.new
     
-    #if the time is 0-9 write in 2 digits
-    @last_updated = time.strftime("%Y%m%d") + time.strftime("%k").tr(" ", "0") + time.strftime("%M")
+    #date-time format (YYYY/MM/DD HH:MM)
+    @last_updated = Time.now.strftime("%Y/%m/%d %H:%M").to_s
     
     @bookmark_name = params[:bookmark_name]
     @link = params[:link]

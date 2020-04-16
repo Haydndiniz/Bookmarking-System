@@ -1,0 +1,36 @@
+<table class="table">
+  <thead>
+    <tr>
+        <th>No.</th>
+        <th>Bookmark Name</th>
+        <th>Link</th>
+        <th>Created by</th>
+        <th>Last Updated</th>
+        <th>Status</th>
+        <th>More Info</th>
+    </tr>
+  </thead>
+
+  <tbody>
+ 
+        <% @bookmark_list.each do |bookmark| %>
+      <tr>
+
+        <td><%= bookmark[0] %></td>
+        <td><%= bookmark[1] %></td>
+        <td><a class="btn btn-info btn-xs" href="<%= bookmark[2] %>">Link</a></td>
+        <td><%= $db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4] %></td>
+        <td><%= bookmark[5] %></td>
+        <td><%= bookmark[6] %></td>
+        <td><a class="btn btn-info btn-xs" href="<%= bookmark[3] %>"> More Info</a></td>
+        
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<!-- <pre>
+    <% @bookmark_list.each do |bookmark| %>
+        <%= bookmark[0] %>
+    <% end %>
+</pre> -->

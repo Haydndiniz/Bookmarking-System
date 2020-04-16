@@ -14,9 +14,9 @@
     <body>
         <!--navigation bar-->
         <%if session[:logged_in] %>
-            <nav class="sticky"><%= erb :user_header %></nav>
+          <%= erb :user_header %>
         <% else %>
-            <nav class="sticky"><%= erb :home_header %></nav>
+           <%= erb :home_header %>
         <% end %>
         
         <!--BODY-->

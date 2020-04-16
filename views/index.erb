@@ -10,18 +10,29 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/home_footer.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
-   
+    <style>
+
+    body {
+    padding-top: 110px;
+    padding-left: 50px;
+    padding-right:50px
+    }
+    </style>
 </head>
 
 
 <body id="bg">
     <!--navigation bar-->
     <%if session[:logged_in] %>
-        <nav class="sticky"><%= erb :user_header %></nav>
+        <header class="sticky"><%= erb :user_header %></header>
     <% else %>
-        <nav class="sticky"><%= erb :home_header %></nav>
+        <header class="sticky"><%= erb :home_header %></header>
     <% end %>
 
+    <!--main content-->
+    <div id="table">
+        <%= erb :bookmark_table %>
+    </div>
     
     <!--footer-->
     <footer>

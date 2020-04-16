@@ -4,7 +4,10 @@ get '/' do
 end
 
 get '/index' do
-            puts session[:name]
+    @search = params[:search]
+    @bookmark_list = $db.execute "SELECT * FROM bookmarks"
+#     Bookmark.find_by(@search)
+#        puts @bookmark_list
        erb :index 
 end
     

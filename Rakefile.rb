@@ -1,4 +1,4 @@
-
+#---------------------------App tasks--------------------------#
 desc "Install the app"
 task :install do
     Rake::Task[:installgems].execute
@@ -8,7 +8,7 @@ end
 desc "Run the Sinatra app locally"
 task :run do
     begin
-        File.read("database/database.sqlite")
+        File.read("database/acme_db.sqlite")
     rescue
         puts "No database found. Creating now..."
         Rake::Task[:createdb].execute

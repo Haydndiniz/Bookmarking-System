@@ -12,8 +12,6 @@ require_relative 'models/user.rb'
 require_relative 'models/bookmarks.rb'
 
 
-
-
 puts "#{Socket.gethostname}"
 
 set :bind, '0.0.0.0' # Needed when running from Codio

@@ -13,10 +13,13 @@ end
 
 post '/login' do 
     session.clear
+    
+    
+    
     @email = params[:email]
     @pass = params[:password]
     @userFound = User.find_user(@email, @pass)
-    puts @userFound
+    
 
     #Gather all user data
     query = "SELECT * FROM users WHERE email = ?;"
@@ -24,15 +27,21 @@ post '/login' do
     @active = @userInfo[0][5]
     
     if @active && @userFound
-        session[:logged_in] = true
-        session[:email] = params[:email]
-        puts session[:email]
+        session[:logged_in] = true #User now logged in
+        session[:admin] = false #User is not an admin until confirmed
+        
+#         store user info in session data
+         session[:email] = @userInfo[0][5]
          session[:user_id] = @userInfo[0][0]
-         session[:name] = @userInfo[0][1]
-        puts session[:name]
+         session[:first_name] = @userInfo[0][1]
+
+        if @userInfo[0][7] == 1
+            session[:admin] = true #User is an admin
+            redirect'/admin'
+        end
         redirect '/index'
-#     else
-#         session[:logged_in] = false
-#         erb :login
+    else
+        session[:logged_in] = false
+        erb :login
     end
 end
