@@ -1,3 +1,5 @@
+VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+                    
 #get login request and redirect to login page
 get '/login' do
     redirect '/index' if session[:logged_in]
@@ -13,27 +15,32 @@ end
 
 post '/login' do 
     session.clear
-    
+    @login = true
     
     
     @email = params[:email]
     @pass = params[:password]
-    @userFound = User.find_user(@email, @pass)
+    @userFound = User.find_user(@email, @pass) 
     
-
+    @email_ok = !@email.nil? && @email != "" && @email =~ VALID_EMAIL_REGEX
+    @pass_ok = !@pass.nil? && @pass != ""
+    @all_ok = @email_ok && @pass_ok
+       
+    if @userFound
     #Gather all user data
     query = "SELECT * FROM users WHERE email = ?;"
     @userInfo = $db.execute query, @email 
-    @active = @userInfo[0][5]
-    
-    if @active && @userFound
+    @active = @userInfo[0][6]
+    end
+        
+    if  @active == 1
         session[:logged_in] = true #User now logged in
         session[:admin] = false #User is not an admin until confirmed
         
-#         store user info in session data
-         session[:email] = @userInfo[0][5]
-         session[:user_id] = @userInfo[0][0]
-         session[:first_name] = @userInfo[0][1]
+    #   store user info in session data
+        session[:email] = @userInfo[0][5]
+        session[:user_id] = @userInfo[0][0]
+        session[:first_name] = @userInfo[0][1]
 
         if @userInfo[0][7] == 1
             session[:admin] = true #User is an admin
@@ -44,4 +51,5 @@ post '/login' do
         session[:logged_in] = false
         erb :login
     end
+    
 end
