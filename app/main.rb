@@ -9,7 +9,6 @@ end
 
 get '/index' do
     @search = params[:search]
-    @bookmark_list = $db.execute "SELECT * FROM bookmarks WHERE report_status = '0' ORDER BY bookmark_name ASC"
 #   Bookmark.find_by(@search)
     erb :index 
 end

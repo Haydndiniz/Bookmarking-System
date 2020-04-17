@@ -17,6 +17,17 @@ task :run do
     Sinatra::Application.run!
 end
 
+desc "Shutdown the app"
+task :shutdown do
+    begin
+        Rake::Task[:backupdb].execute
+        File.read("database/acme_db.sqlite")
+        Rake::Task[:deletedb].execute
+        puts"Successfully terminated app"
+    rescue
+        puts"App terminated, acme_db was not found or has already been cleaned"
+    end
+end
 
 #---------------------------Database tasks--------------------------#
 desc "Create db"
@@ -54,7 +65,7 @@ task :createtestdb do
     system('ruby database/createDatabase.rb testdb')
 end
 
-desc "Restore the state of the db"
+desc "Restore the empty state of the db"
 task :wipedb do
   puts "Wiping the database"
   `ruby database/wipeDatabase.rb`

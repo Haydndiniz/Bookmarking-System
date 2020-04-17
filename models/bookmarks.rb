@@ -1,11 +1,12 @@
 module Bookmark
     
-    def Bookmark.new(bookmark_id, bookmark_name, link, description, creator, last_updated)
+    def Bookmark.new(bookmark_name, link, description, creator, last_updated)
         result = false
-        insert = "INSERT INTO bookmarks (bookmark_id, bookmark_name, link, description, creator, last_updated) VALUES(?, ?, ?, ?, ?, ?);"
+        insert = "INSERT INTO bookmarks (bookmark_name, link, description, creator, last_updated, report_status) VALUES (?,?,?,?,?,?)"
         begin
-            $db.execute insert, bookmark_id, bookmark_name, link, description, creator, last_updated
+            $db.execute insert, bookmark_name, link, description, creator, last_updated, 0
             result = true
+            puts "Insertion success"
         rescue SQLite3::ConstraintException
             puts "Insertion Failed"
         end
