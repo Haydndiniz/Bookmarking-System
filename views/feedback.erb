@@ -20,16 +20,23 @@
         <% end %>
         
         <!--BODY-->
-        <form action="/sendFeedback" method="post">
-            
-            <textarea name="feedback" class="feedback" rows="5" cols="50" placeholder="Type your feedback here.." required></textarea>
-            
-            <p>
-              <button>Submit</button>
-              <input type="reset">
-            </p>
-        </form>
-        
+        <div class="login-dark" style="height: 790px;">
+            <form method="post" action="/sendFeedback" style="margin: 0px;height: 366px;width: 493px;margin-top: -40px;">
+                <h2 class="sr-only">Feedback Form</h2>
+                <div class="form-group"><label class="d-lg-flex align-self-center justify-content-lg-center">Feedback Form</label></div>
+                <label class="text-secondary">Select your issue below:</label>
+                <div class="form-group text-white"><select class="custom-select" required="" style="background-color: #1e2833;" name="feedback_topic">
+                <optgroup label="Select your issue">
+                    <option value="Broken links" selected="">Broken links</option>
+                    <option value="Page not found">Page not found</option>
+                    <option value="Incorrect data">Incorrect data</option>
+                    <option value="Other">Other</option></optgroup></select></div>
+                <div class="form-group"><textarea class="form-control" rows="4" 
+                            placeholder="Enter your feedback, please be as descriptive as possible ..." name="feedback" required="" maxlength="100"></textarea></div>
+                <div class="form-group"><button class="btn btn-secondary btn-block" type="reset" style="width: 176px;">Reset Form</button><button class="btn btn-primary btn-block" type="submit" style="width: 176px;margin: 235px;margin-top: -38px;margin-right: 130px;height: 38px;padding: 0px;">Submit</button></div>
+            </form>
+        </div>
+
         <!--footer-->
         <footer>
         <%= erb :home_footer %>
