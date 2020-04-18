@@ -30,7 +30,8 @@ post '/login' do
     #Gather all user data
     query = "SELECT * FROM users WHERE email = ?;"
     @userInfo = $db.execute query, @email 
-    @active = @userInfo[0][6]
+    @active = @userInfo[0][5]
+        puts @active
     end
         
     if  @active == 1
@@ -38,11 +39,11 @@ post '/login' do
         session[:admin] = false #User is not an admin until confirmed
         
     #   store user info in session data
-        session[:email] = @userInfo[0][5]
+        session[:email] = @userInfo[0][4]
         session[:user_id] = @userInfo[0][0]
         session[:first_name] = @userInfo[0][1]
 
-        if @userInfo[0][7] == 1
+        if @userInfo[0][6] == 1
             session[:admin] = true #User is an admin
             redirect'/admin'
         end
