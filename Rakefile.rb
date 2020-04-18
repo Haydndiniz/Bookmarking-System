@@ -1,4 +1,10 @@
 #---------------------------App tasks--------------------------#
+desc "Install gems"
+task :installgems do
+   puts "Installing gems"
+   system('bundle install')
+end
+
 desc "Install the app"
 task :install do
     Rake::Task[:installgems].execute
