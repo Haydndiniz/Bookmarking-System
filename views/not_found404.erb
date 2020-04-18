@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ERR404 - ACME</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="css/not_found.css">
+</head>
+
+<body id="page-top">
+     <!--navigation bar-->
+        <%if session[:logged_in] %>
+            <nav class="sticky"><%= erb :user_header %></nav>
+        <% else %>
+            <nav class="sticky"><%= erb :home_header %></nav>
+        <% end %>
+    
+    <div class="login-dark" style="height: 790px;">
+        <form style="margin: 0px;height: 221px;width: 493px;margin-top: -40px;"><label class="text-center d-lg-flex justify-content-lg-center">ERROR 404</label>
+            <label class="text-center d-lg-flex justify-content-lg-center">Page not found&nbsp;</label>
+            <label class="text-center d-lg-flex justify-content-lg-center">The page you were looking for could not be found</label>
+            <a
+                class="d-lg-flex justify-content-lg-center" href="/index">Click here to go back Home.</a>
+        </form>
+    </div>
+    
+    
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="assets/js/script.min.js"></script>
+</body>
+
+</html>

@@ -25,6 +25,5 @@ end
 
 #not_found page
 not_found do
-    "page not found"
-#     erb :not_found404
+    erb :not_found404
 end
