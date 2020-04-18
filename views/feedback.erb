@@ -20,12 +20,12 @@
         <% end %>
         
         <!--BODY-->
-        <div class="login-dark" style="height: 790px;">
+        <div class="login-dark" id="form" style="height: 790px;">
             <form method="post" action="/sendFeedback" style="margin: 0px;height: 366px;width: 493px;margin-top: -40px;">
                 <h2 class="sr-only">Feedback Form</h2>
                 <div class="form-group"><label class="d-lg-flex align-self-center justify-content-lg-center">Feedback Form</label></div>
                 <label class="text-secondary">Select your issue below:</label>
-                <div class="form-group text-white"><select class="custom-select" required="" style="background-color: #1e2833;" name="feedback_topic">
+                <div class="form-group" ><select class="custom-select" required="" name="feedback_topic">
                 <optgroup label="Select your issue">
                     <option value="Broken links" selected="">Broken links</option>
                     <option value="Page not found">Page not found</option>
