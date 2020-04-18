@@ -33,7 +33,7 @@ post '/login' do
     @active = @userInfo[0][6]
     end
         
-    if  @active == 1
+    if  @active == 0
         session[:logged_in] = true #User now logged in
         session[:admin] = false #User is not an admin until confirmed
         
