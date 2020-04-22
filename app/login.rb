@@ -1,22 +1,23 @@
 VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-                    
+
+#get logout request and redirect to index page
+get '/logout' do                       
+  	session.clear
+   flash[:info] = "You have been successfully logged out"
+  	redirect '/index'
+end
+
+
 #get login request and redirect to login page
 get '/login' do
     redirect '/index' if session[:logged_in]
     erb :login
 end
 
-
-#get logout request and redirect to index page
-get '/logout' do                       
-  	session.clear
-  	redirect '/index'
-end
-
 post '/login' do 
     session.clear
     @login = true
-    
+ 
     
     @email = params[:email]
     @pass = params[:password]
@@ -34,7 +35,7 @@ post '/login' do
         puts @active
     end
         
-    if  @active == 0
+    if  @active == 1
         session[:logged_in] = true #User now logged in
         session[:admin] = false #User is not an admin until confirmed
         
@@ -47,6 +48,8 @@ post '/login' do
             session[:admin] = true #User is an admin
             redirect'/admin'
         end
+       
+        flash[:notice] = "You have successfully signed in"
         redirect '/index'
     else
         session[:logged_in] = false

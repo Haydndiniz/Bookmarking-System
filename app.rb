@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 require 'bcrypt'
+require 'sinatra/flash'
 
 require_relative 'app/main.rb'
 require_relative 'app/login.rb'

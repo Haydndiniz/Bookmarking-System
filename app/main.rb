@@ -14,8 +14,6 @@ get '/index' do
 end
     
 
-
-
 # my account page
 get'/myAccount' do
     redirect '/index' unless session[:loggedin]

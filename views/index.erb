@@ -29,6 +29,15 @@
         <header class="sticky"><%= erb :home_header %></header>
     <% end %>
 
+    <% flash.keys.each do |type| %>
+
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong></strong> <%= flash[type] %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+    <% end %>
     <!--main content-->
     <div id="table">
         <%= erb :bookmark_table %>
@@ -39,10 +48,10 @@
     <%= erb :home_footer %>
 
  
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="assets/js/script.min.js"></script>
+    <script src="js/script.min.js"></script>
 
 
 </body>
