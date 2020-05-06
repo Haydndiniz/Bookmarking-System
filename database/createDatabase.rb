@@ -97,6 +97,7 @@ SQL
 DB.execute <<-SQL
 CREATE TABLE IF NOT EXISTS "users" (
 	"user_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"username"  TEXT NOT NULL UNIQUE,
 	"first_name"	TEXT,
 	"last_name"	TEXT,
 	"password"	TEXT NOT NULL,
@@ -135,7 +136,7 @@ csvBookmarkHistory.each do |row|
 end
 
 csvUsers.each do |row|
-    DB.execute "insert into users values ( ?, ?, ?, ?, ?, ?, ?)", row.fields
+    DB.execute "insert into users values ( ?, ?, ?, ?, ?, ?, ?, ?)", row.fields
 end
 
 csvTags.each do |row|
