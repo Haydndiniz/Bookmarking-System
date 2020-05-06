@@ -1,0 +1,13 @@
+Star rating update pseudocode
+
+obtain BookmarkID 
+rating = new rating input
+numRatings = SQL Query get num_ratings from table bookmarks
+currentRating = SQL Query get rating from table bookmarks
+
+currentRating = ((currentRating x numRatings)+rating)/(numRatings+1))
+numRatings +=1
+
+UPDATE bookmarks table:
+"rating" <- currentRating
+"num_ratings" <-numRatings
