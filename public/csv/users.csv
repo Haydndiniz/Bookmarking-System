@@ -1,4 +1,4 @@
-user_id,first_name,last_name,password,email,active_status,admin
+user_id,username,first_name,last_name,password,email,active_status,admin
 1,JSmith1,John,Smith,$2a$12$l5kJ4GY8Tjs1OafYrH57keHITE1lYtQKKLo7jrVgippgX5HZBqQe2,john.smith12@intranet.com,1,0
 2,AMynn3,Adh,Mynn,$2a$12$.tWAdevg3fc3R6ts1IKPluI/t7rhtsTcZLCa1lDI2xzKAVyBZhf1a,adh.mynn@intranet.com,1,0
 3,BBob00,Bob,Bob,$2a$12$L/RL.8vf0YYGgCM45.bgnOLYTL48x9G.0dom1xhYpMNPpKLKwaZTC,bob.bob@intranet.com,1,0

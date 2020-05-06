@@ -1,0 +1,34 @@
+Iteration 1
+Status icons for bookmarks
+
+
+Iteration 2
+change user model to use username
+bookmarks to use creator usernames instead of emails
+sign up to be created
+my account area for users
+admin section to be created
+search and filter for bookmarks
+user history 
+user favounties
+Contact form
+rating in star format for the bookmark table
+add the more info option for bookmarks
+update footer
+
+
+Optional
+update placeholder on feedback form
+
+
+
+
+
+bookmarks
+not working = 0
+reported = 1
+working = 2
+
+users 
+suspended = 0
+active = 1

@@ -4,7 +4,7 @@ module Bookmark
         result = false
         insert = "INSERT INTO bookmarks (bookmark_name, link, description, creator, last_updated, report_status) VALUES (?,?,?,?,?,?)"
         begin
-            $db.execute insert, bookmark_name, link, description, creator, last_updated, 0
+            $db.execute insert, bookmark_name, link, description, creator, last_updated, 1
             result = true
             puts "Insertion success"
         rescue SQLite3::ConstraintException

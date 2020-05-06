@@ -31,7 +31,7 @@ post '/login' do
     #Gather all user data
     query = "SELECT * FROM users WHERE email = ?;"
     @userInfo = $db.execute query, @email 
-    @active = @userInfo[0][5]
+    @active = @userInfo[0][6]
         puts @active
     end
         
@@ -40,11 +40,12 @@ post '/login' do
         session[:admin] = false #User is not an admin until confirmed
         
     #   store user info in session data
-        session[:email] = @userInfo[0][4]
+        session[:email] = @userInfo[0][5]
         session[:user_id] = @userInfo[0][0]
-        session[:first_name] = @userInfo[0][1]
+        session[:username] = @userInfo[0][1]
+        session[:first_name] = @userInfo[0][2]
 
-        if @userInfo[0][6] == 1
+        if @userInfo[0][7] == 1
             session[:admin] = true #User is an admin
             redirect'/admin'
         end
@@ -52,6 +53,7 @@ post '/login' do
         flash[:notice] = "You have successfully signed in"
         redirect '/index'
     else
+        flash[:notice] = "Please check your Usename and Password and try again"
         session[:logged_in] = false
         erb :login
     end
