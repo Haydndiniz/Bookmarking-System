@@ -1,0 +1,28 @@
+#searchbar{
+    width: 100%;
+    padding: 2%;
+}
+
+#searchbar form{
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchbar input[type=search], select, textarea{
+  width: 70%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#searchbar button[type=submit]{
+    width: 15%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}

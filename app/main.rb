@@ -9,10 +9,10 @@ end
 
 get '/index' do
     @search = params[:search]
-#   Bookmark.find_by(@search)
+#    puts @search
+#    @bookmark_list = Bookmark.find_by(@search)
     erb :index 
 end
-    
 
 # my account page
 get'/myAccount' do
@@ -35,3 +35,14 @@ get'/admin' do
    
     erb :admin_dashboard
 end
+
+##--------------------Post Methods--------------------#
+
+#search
+post '/index' do
+    @search = params[:search]
+    query = "SELECT * FROM bookmarks WHERE bookmark_name LIKE ?;"
+    @bookmark_list = $db.execute query, '%' + @search + '%'
+    erb :index
+end
+

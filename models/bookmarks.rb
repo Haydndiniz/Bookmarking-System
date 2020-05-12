@@ -14,9 +14,10 @@ module Bookmark
     end
     
     def Bookmark.find_by(search)
-        result[]
         db = Sqlite::Database.new '../database/acme_db.sqlite'
-        query = "SELECT"
+        query = "SELECT * FROM bookmarks WHERE bookmark_name LIKE ?;"
+        result = $db.execute query, '%' + @search + '%'
+        return result
     end
         
 end

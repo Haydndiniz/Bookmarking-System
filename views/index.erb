@@ -9,6 +9,7 @@
     <title>Home - ACME</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/home_footer.css">
+    <link rel="stylesheet" href="css/searchbar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
     <style>
 
@@ -41,6 +42,10 @@
 </div>
     <% end %>
     <!--main content-->
+    <div id="searchbar">
+        <%= erb :searchbar %>
+    </div>
+    
     <div id="table">
         <%= erb :bookmark_table %>
     </div>
