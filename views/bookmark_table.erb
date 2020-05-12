@@ -18,10 +18,21 @@
 
         <td><%= bookmark[0] %></td>
         <td><%= bookmark[1] %></td>
-        <td><a class="btn btn-info btn-xs" href="<%= bookmark[2] %>">Link</a></td>
+        <td><a class="btn btn-info btn-xs" href="<%= bookmark[2] %>" target="_blank">Link</a></td>
         <td><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %></td>
         <td><%= bookmark[5] %></td>
-        <td><%= bookmark[6] %></td>
+         
+        <td>
+           <% case bookmark[6] when 0 %>
+               <img src='images/red.png' class="icon" alt="broken link" />
+           <% when 1 %>
+               <img src='images/amber.png' class="icon" alt="link under review"/>
+           <% when 2 %>
+               <img src='images/green.png' class="icon" alt="working link"/>
+           <% else %>
+           <% end %>
+         </td>
+         
         <td><a class="btn btn-info btn-xs" href="<%= bookmark[3] %>"> More Info</a></td>
         
       </tr>

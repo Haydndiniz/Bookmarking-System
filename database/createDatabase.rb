@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS "bookmarks" (
 	"description"	TEXT,
 	"creator"	INTEGER,
 	"last_updated"	TEXT,
-	"report_status"	INTEGER DEFAULT 0,
+	"report_status"	INTEGER DEFAULT 2,
 	"rating"	INTEGER DEFAULT 0,
 	"num_ratings"	INTEGER DEFAULT 0
 );

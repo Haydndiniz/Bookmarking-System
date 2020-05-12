@@ -1,5 +1,5 @@
 before do
-    @bookmark_list = $db.execute "SELECT * FROM bookmarks WHERE report_status = '0' ORDER BY bookmark_name ASC"
+    @bookmark_list = $db.execute "SELECT * FROM bookmarks ORDER BY bookmark_name ASC"
 end
 
 ##--------------------Get Methods--------------------#
