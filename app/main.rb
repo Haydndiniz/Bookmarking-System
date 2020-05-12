@@ -9,7 +9,7 @@ end
 
 get '/index' do
     @search = params[:search]
-#   Bookmark.find_by(@search)
+#    @bookmark_list = Bookmark.find_by(@search)
     erb :index 
 end
     
