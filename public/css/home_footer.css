@@ -8,5 +8,6 @@
 .footer-basic .copyright {margin-top:15px;text-align:center;font-size:13px;color:#aaa;margin-bottom:0}
 
 img.icon {
-  height: 40%;
+  height: 30px;
+   width: auto;
 }

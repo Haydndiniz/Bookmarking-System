@@ -25,3 +25,9 @@ end
 not_found do
     erb :not_found404
 end
+
+get'/edit_bookmark' do
+   
+    erb :edit_bookmark
+end
+
