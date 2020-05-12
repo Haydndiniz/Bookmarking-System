@@ -9,12 +9,8 @@
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
             </ul>
-            <% if session[:logged_in] %>
-                <a class="btn btn-primary" role="button" style="margin-right: 20px;" href="/logout">LOG OUT</a>
-            <% else %>
                 <a class="btn btn-primary" role="button" style="margin-right: 20px;" href="/login">LOG IN</a>
                 <a class="btn btn-primary" role="button" href="/signup">SIGN UP</a>
-            <% end %>
         </div>
     </div>
 </nav>

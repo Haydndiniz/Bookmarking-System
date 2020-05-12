@@ -13,11 +13,23 @@
     
     <body>
         <!--navigation bar-->
-        <%if session[:logged_in] %>
-            <nav class="sticky"><%= erb :user_header %></nav>
-        <% else %>
-            <nav class="sticky"><%= erb :home_header %></nav>
-        <% end %>
+    <% if session[:logged_in] && session[:admin] %>
+        <header class="sticky"><%= erb :admin_header %></header>
+    <% elsif session[:logged_in] && !session[:admin] %>
+        <header class="sticky"><%= erb :user_header %></header>
+    <% else %>
+        <header class="sticky"><%= erb :home_header %></header>
+    <% end %>
+
+    <% flash.keys.each do |type| %>
+
+      <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+        <strong><%= flash[type] %></strong> 
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
         
         <!--BODY-->
         <div class="login-dark" id="form" style="height: 790px;">

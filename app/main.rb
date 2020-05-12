@@ -31,3 +31,7 @@ get'/edit_bookmark' do
     erb :edit_bookmark
 end
 
+get'/admin' do
+   
+    erb :admin_dashboard
+end

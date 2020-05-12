@@ -44,16 +44,18 @@ post '/login' do
         session[:user_id] = @userInfo[0][0]
         session[:username] = @userInfo[0][1]
         session[:first_name] = @userInfo[0][2]
+        session[:last_name] = @userInfo[0][3]
 
         if @userInfo[0][7] == 1
             session[:admin] = true #User is an admin
+            flash[:info] = "welcome to system control"
             redirect'/admin'
         end
        
-        flash[:notice] = "You have successfully signed in"
+        flash[:info] = "Successfully signed in as #{session[:username]}"
         redirect '/index'
     else
-        flash[:notice] = "Please check your Usename and Password and try again"
+        flash[:warning] = "Please check your Usename and Password and try again"
         session[:logged_in] = false
         erb :login
     end

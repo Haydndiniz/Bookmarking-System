@@ -5,5 +5,5 @@ user_id,username,first_name,last_name,password,email,active_status,admin
 4,WMcGee05,Worker,McGee,$2a$12$1Ns6.Eb/E3MaEntBbh0PK.uL.7uFVN/R/DNKUMjQs5n3YOJtFjfom,contractor.worker.mcgee@intranet.com,1,0
 5,DBaker45,Dave,Baker,$2a$12$InpL8KeZW9W9Bzrf/SmVMeUtvZz8564te4xZhUTq0UM3Rn98nWn7S,dave.baker@intranet.com,1,0
 6,KGreen50,Karen,Green,$2a$12$Dhn9gbSQ03cGt0YADsDvMeNh.4yO.GqhRP63fcCxDxVHxoEr8U8gu,karen.green@intranet.com,1,0
-7,TTest123,test,test,$2a$12$NOwjDBlY.u9R9H9hEi7zMeYCFQWzVcHJJEfYLsgE38NKFlcOhGK.e,test@gmail.com,1,0
+7,TTest90,test,test,$2a$12$NOwjDBlY.u9R9H9hEi7zMeYCFQWzVcHJJEfYLsgE38NKFlcOhGK.e,test@gmail.com,1,1
 8,EUser42,Encrypted,User,$2a$12$l2yHTuMOgHXmAT2qm3JAke/crMhUUisov6o/qxlH3WP81OQAOIsRe,encrypted@user.com,1,0
