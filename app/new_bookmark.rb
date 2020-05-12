@@ -12,7 +12,7 @@ post '/new_Bookmark' do
     @bookmark_name = params[:bookmark_name]
     @link = params[:link]
     @description = params[:description]
-    @report_status=0
+    @report_status=2
     
     Bookmark.new(@bookmark_name, @link, @description, session[:user_id], @last_updated)
     
