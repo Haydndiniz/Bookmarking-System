@@ -1,15 +1,11 @@
 get '/edit_bookmark/:id' do
-    if !session[:logged_in]
-        flash[:warning] = "Please login to edit bookmarks"
-    end   
-    redirect '/index' if !session[:logged_in]
-    @bookmark_id = params[:id]
-    @bookmark_info = Bookmark.find_by_id(@bookmark_id)
-    @bookmark_name = @bookmark_info[0][1]
-    @link = @bookmark_info[0][2]
-    @description = @bookmark_info[0][3]
-    @bookmark_name = @bookmark_info[0][4]
-    erb :edit_bookmark
+    session[:editing] = params["id"]
+
+    redirect '/edit_bookmark'
+end
+
+get '/edit_bookmark' do  
+    erb :edit_bookmark  
 end
 
 post '/EditBookmark' do
