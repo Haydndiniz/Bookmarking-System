@@ -9,6 +9,8 @@ require_relative 'app/login.rb'
 require_relative 'app/new_bookmark.rb'
 require_relative 'app/new_feedback.rb'
 require_relative 'app/edit_bookmark.rb'
+require_relative 'app/admin.rb'
+
 
 require_relative 'models/user.rb'
 require_relative 'models/bookmarks.rb'

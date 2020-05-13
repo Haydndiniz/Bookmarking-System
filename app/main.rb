@@ -31,11 +31,6 @@ end
 #     erb :edit_bookmark
 # end
 
-get'/admin' do
-   
-    erb :admin_dashboard
-end
-
 ##--------------------Post Methods--------------------#
 
 #search

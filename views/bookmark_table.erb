@@ -21,7 +21,12 @@
         <td><%= bookmark[1] %></td>
         <td><a class="btn btn-info btn-xs" href="<%= bookmark[2] %>" target="_blank">Link</a></td>
         <td><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %></td>
-        <td><%= bookmark[7].round(1) %>/5  (<%= bookmark[8] %>)</td>
+        <td>
+            <span style="font-size: 200%;"><span style="color: #fcad03; ">
+            <% for i in 1..(bookmark[7].round(1))%> ★ <% end %></span>
+            <% for i in 1..(5-bookmark[7].round(1))%> ☆ <% end %></span>
+            (<%= bookmark[8] %>)
+        </td>
         <td><%= bookmark[5] %></td>
          
         <td>
