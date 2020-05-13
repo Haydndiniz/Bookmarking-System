@@ -27,5 +27,11 @@ module User
         end
         return result
     end
+   
+   def User.getNumber(status)
+       query = "SELECT COUNT(*)FROM users WHERE active_status = ?;"
+       result = $db.execute query, status
+       return result[0][0]
+   end
             
 end

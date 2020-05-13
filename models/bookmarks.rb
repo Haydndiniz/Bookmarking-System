@@ -42,5 +42,11 @@ module Bookmark
         end
         return result        
     end
+   
+    def Bookmark.getStatus(status)
+        query = "SELECT COUNT (*) FROM bookmarks WHERE report_status = ?;"
+        result = $db.execute query, status
+        return result[0][0]   
+    end
     
 end
