@@ -22,19 +22,17 @@ module Bookmark
     
     def Bookmark.find_by_id(bookmark_id)
         result = Array.new
-        query = "SELECT * FROM bookmarks WHERE bookmark_id = (?)"
+        query = "SELECT * FROM bookmarks WHERE bookmark_id = (?);"
         result = $db.execute query, bookmark_id
-        puts result
         return result
     end
     
-    def Bookmark.update(bookmark_id, bookmark_name, link, description, last_updated)
+    def Bookmark.update(bookmark_name, link, description, last_updated, bookmark_id)
         result = false
-        update = "UPDATE bookmarks SET bookmark_name = (?), link = (?),
-                description = (?), last_updated = (?) 
-                WHERE  bookmark_id = (?)"
+        updateQuery = "UPDATE bookmarks SET bookmark_name = ?, link = ?,
+                description = ?, last_updated = ? WHERE  bookmark_id = ?;"
         begin
-            $db.execute update, bookmark_id, bookmark_name, link, description, creator, last_updated
+            $db.execute updateQuery, bookmark_name, link, description, last_updated, bookmark_id
             result = true
             puts "Insertion success"
         rescue SQLite3::ConstraintException

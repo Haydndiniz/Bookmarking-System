@@ -33,13 +33,21 @@
         <!--BODY-->
  
         <div class="bookmark-dark" style="height: 790px;">
-            <form  action="/new_Bookmark" method="post" style="margin: 0px;height: 340px;width: 500px;margin-top: -70px;">
+            <form  action="/EditBookmark" method="post" style="margin: 0px;height: 340px;width: 500px;margin-top: -70px;">
                 <h2 class="sr-only">Edit bookmark</h2>
-                <div class="form-group"><input class="form-control" type="text" name="bookmark_name" placeholder= "enter bookmark name" required="" maxlength = "40"></div>
-                <div class="form-group"><input class="form-control" type="text" name="link" placeholder="Enter the bookmark URL" required="" inputmode="url"></div>
-                <div class="form-group"><textarea class="form-control" rows="4" placeholder="Enter a bookmark description..." name="description" required="" maxlength="100"></textarea></div>
-                <div class="form-group"><button class="btn btn-secondary btn-block" type="reset" style="width: 176px;">Reset Form</button>
-                    <button class="btn btn-primary btn-block" type="submit" style="width: 176px;margin: 235px;margin-top: -38px;margin-right: 130px;height: 38px;padding: 0px;">Submit</button></div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="bookmark_name" value="<%= @bookmark_info[0][1] %>" placeholder="Enter the bookmark name"required="" maxlength = "40">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="link" value="<%= @bookmark_info[0][2] %>" placeholder="Enter the bookmark URL" required="" inputmode="url">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="4" name="description" placeholder="Enter a bookmark description..." required="" maxlength="100"><%= @bookmark_info[0][3] %></textarea>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-secondary btn-block" style="width: 176px;" href="/">Cancel Form</a>
+                    <button class="btn btn-primary btn-block" type="submit" style="width: 176px;margin: 235px;margin-top: -38px;margin-right: 130px;height: 38px;padding: 0px;">Submit</button>
+                </div>
             </form>
         </div>
 <!------------------------footer---------------->

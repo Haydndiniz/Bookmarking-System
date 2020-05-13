@@ -12,7 +12,7 @@ post '/sendFeedback' do
     @feedback = params[:feedback]
     if session[:logged_in]
         @current_user = session[:user_id]
-    else 
+    else
         @current_user = guest
     end
     
