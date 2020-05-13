@@ -19,5 +19,28 @@ module Bookmark
         result = $db.execute query, '%' + @search + '%'
         return result
     end
-        
+    
+    def Bookmark.find_by_id(bookmark_id)
+        result = Array.new
+        query = "SELECT * FROM bookmarks WHERE bookmark_id = (?)"
+        result = $db.execute query, bookmark_id
+        puts result
+        return result
+    end
+    
+    def Bookmark.update(bookmark_id, bookmark_name, link, description, last_updated)
+        result = false
+        update = "UPDATE bookmarks SET bookmark_name = (?), link = (?),
+                description = (?), last_updated = (?) 
+                WHERE  bookmark_id = (?)"
+        begin
+            $db.execute update, bookmark_id, bookmark_name, link, description, creator, last_updated
+            result = true
+            puts "Insertion success"
+        rescue SQLite3::ConstraintException
+            puts "Insertion Failed"
+        end
+        return result        
+    end
+    
 end

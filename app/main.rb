@@ -26,10 +26,10 @@ not_found do
     erb :not_found404
 end
 
-get'/edit_bookmark' do
+# get'/edit_bookmark' do
    
-    erb :edit_bookmark
-end
+#     erb :edit_bookmark
+# end
 
 get'/admin' do
    
