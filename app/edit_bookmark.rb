@@ -1,6 +1,6 @@
 get '/edit_bookmark/:id' do
     if !session[:logged_in]
-        warning[:loginrequired] = "Please login to edit bookmarks"
+        flash[:warning] = "Please login to edit bookmarks"
     end   
     redirect '/index' if !session[:logged_in]
     @bookmark_id = params[:id]
