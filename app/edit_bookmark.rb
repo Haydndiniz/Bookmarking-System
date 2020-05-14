@@ -1,4 +1,10 @@
 get '/edit_bookmark/:id' do
+    if !session[:logged_in]
+        flash[:warning] = "Please login to edit bookmarks"
+    end
+    
+    redirect '/index' if !session[:admin]
+    
     session[:editing_id] = params["id"]
    
     redirect '/edit_bookmark'
@@ -21,16 +27,7 @@ post '/EditBookmark' do
     @last_updated = Time.now.strftime("%Y/%m/%d %H:%M").to_s
     
     
-    puts @bookmark_name, @link, @description, @last_updated, session[:editing_id]
-    
     Bookmark.update(@bookmark_name, @link, @description, @last_updated, session[:editing_id])
-    
-#     update_bookmark = "UPDATE bookmarks SET bookmark_name = ?, link = ?, description = ?, last_updated = ? WHERE  bookmark_id = ?" 
-    
-#     $db.execute update_bookmark, session[:bookmark_name], session[:link], session[:description], @last_updated, session[:editing_id]
-    
-    puts "AFTER"
-    puts @bookmark_name, @link, @description, @last_updated, session[:editing_id]
     
     redirect '/'
 end

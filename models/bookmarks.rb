@@ -24,7 +24,7 @@ module Bookmark
         result = Array.new
         query = "SELECT * FROM bookmarks WHERE bookmark_id = (?);"
         result = $db.execute query, bookmark_id
-        return result
+        return result[0]
     end
     
     def Bookmark.update(bookmark_name, link, description, last_updated, bookmark_id)
