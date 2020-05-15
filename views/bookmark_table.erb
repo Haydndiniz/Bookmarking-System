@@ -4,7 +4,7 @@
         <th>No.</th>
         <th>Bookmark Name</th>
         <th>Link</th>
-        <th>Created by</th>
+        
         <th>Rating</th>
         <th>Last Updated</th>
         <th>Status</th>
@@ -19,10 +19,9 @@
 
         <td><%= @bookmark_list.find_index(bookmark) + 1 %></td>
         <td><%= bookmark[1] %></td>
-        <td><a class="btn btn-info btn-xs" href="<%= bookmark[2] %>" target="_blank">Link</a></td>
-        <td><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %></td>
+        <td><a class="btn btn-info btn-sm" href="<%= bookmark[2] %>" target="_blank">Link</a></td>
         <td>
-            <span style="font-size: 200%;"><span style="color: #fcad03; ">
+            <span style="font-size: 120%;"><span style="color: #fcad03; ">
             <% for i in 1..(bookmark[7].round(1))%> ★ <% end %></span>
             <% for i in 1..(5-bookmark[7].round(1))%> ☆ <% end %></span>
             (<%= bookmark[8] %>)
@@ -40,7 +39,11 @@
            <% end %>
          </td>
          
-        <td><a class="btn btn-info btn-xs" href="<%= bookmark[3] %>"> More Info</a></td>
+        <td><a tabindex="0" class="btn btn-sm btn-info" role="button"  data-html="true" data-toggle="popover" data-trigger="focus" title=<%= bookmark[1] %>
+               data-content="<div><b>Boomark ID: <%= bookmark[0] %></b> </div>
+                             <div><b>Description: </b><%= bookmark[4] %> </div>
+                             <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %> </div>">More Info</a>
+</td>
 
         
       </tr>
