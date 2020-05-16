@@ -1,5 +1,5 @@
 bookmark_id,bookmark_name,link,description,creator,last_updated,report_status,rating,num_ratings
-1,editedBookmark1,editedtest.com,"description 1",3,"2020/05/13 18:12",2,5,1
+1,editedBookmark1,http://editedtest.com,"description 1",3,"2020/05/13 18:12",2,5,1
 2,Bookmark2,http://tabs.ultimate-guitar.com/p/panic_at_the_disco/this_is_gospel_ver2_crd.htm,"description 2",1,"2020/03/1 17:12",2,5,2
 3,Bookmark3,https://tabs.ultimate-guitar.com/o/one_direction/steal_my_girl_ver3_crd.htm,"description 3",1,"2020/03/1 17:13",2,5,3
 4,Bookmark4,https://tabs.ultimate-guitar.com/e/ed_sheeran/i_will_take_you_home_ver4_crd.htm,"description 4",5,"2020/03/1 17:14",2,5,4
@@ -11,7 +11,7 @@ bookmark_id,bookmark_name,link,description,creator,last_updated,report_status,ra
 10,Bookmark10,https://tabs.ultimate-guitar.com/h/hozier/take_me_to_church_ver5_crd.htm,"description 10",1,"2020/03/1 17:20",1,5,30
 11,Bookmark11,https://tabs.ultimate-guitar.com/o/oasis/half_the_world_away_ver5_crd.htm,"description 11",2,"2020/03/1 17:21",1,5,35
 12,Bookmark12,https://tabs.ultimate-guitar.com/d/demi_lovato/la_la_land_crd.htm,"description 12",5,"2020/03/1 17:22",1,5,40
-13,Bookmark13,reportededittest.com,"description 13",1,"2020/05/13 18:13",0,5,45
+13,Bookmark13,https://reportededittest.com,"description 13",1,"2020/05/13 18:13",0,5,45
 14,Bookmark14,https://tabs.ultimate-guitar.com/t/the_jackson_5/i_want_you_back_ver2_crd.htm,"description 14",2,"2020/03/1 17:24",0,5,50
 15,Bookmark15,https://tabs.ultimate-guitar.com/s/sia/elastic_heart_crd.htm,"description 15",2,"2020/03/1 17:25",0,5,55
 16,Bookmark16,https://tabs.ultimate-guitar.com/t/the_all-american_rejects/dirty_little_secret_crd.htm,"description 16",1,"2020/03/1 17:26",0,5,60

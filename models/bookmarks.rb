@@ -58,4 +58,11 @@ module Bookmark
         end
         return result
     end
+   
+   #method to get the truncated url
+   def Bookmark.getHost(url)
+      uri = URI(url)
+      
+      return uri.host      
+   end
 end

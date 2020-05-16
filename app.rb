@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require 'sqlite3'
 require 'bcrypt'
 require 'sinatra/flash'
+require 'uri'
 
 require_relative 'app/main.rb'
 require_relative 'app/login.rb'

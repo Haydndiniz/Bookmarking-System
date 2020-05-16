@@ -4,17 +4,21 @@ Status icons for bookmarks
 
 Iteration 2
 change user model to use username
-bookmarks to use creator usernames instead of emails
+login to use creator usernames instead of emails
 sign up to be created
 my account area for users
-admin section to be created
-search and filter for bookmarks
+admin section to be created --started
+search and filter for bookmarks -- search complete
 user history 
-user favounties
+user favourties
 Contact form
-rating in star format for the bookmark table
-add the more info option for bookmarks
+rating in star format for the bookmark table- partially done
+add the more info option for bookmarks- done
 update footer
+
+new Edit user view for admin
+new my account page for users
+
 
 
 Optional

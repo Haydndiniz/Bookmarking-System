@@ -7,4 +7,5 @@ source 'https://rubygems.org' do
    gem 'minitest'
    gem 'bcrypt'
    gem 'sinatra-flash'
+   gem 'uri'
 end
