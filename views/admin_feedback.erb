@@ -155,10 +155,68 @@
                     </div>
                 </div>
             </div>
-          
+             <div class="row">
+                        <div class="col-lg-13 col-xl-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-primary font-weight-bold m-0">Bookmarks</h6>
+                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                        <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
+                                            role="menu">
+                                            <p class="text-center dropdown-header">Actions:</p><a class="dropdown-item" role="presentation" href="/new_bookmark">&nbsp;Add bookmark</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="table">
+                                   <thead>
+                                     <tr>
+                                         <th>ID No.</th>
+                                         <th>Feedback Topic</th>
+                                         <th>Feedback</th>
+                                         
+                                         <th>Date Submitted</th>                                        
+                                         <th>Submitted by</th>
+                                         <th>Resolved Status</th>                                       
+                                         <th>Resolve</th>
+                                     </tr>
+                                   </thead>
+
+                                   <tbody>
+
+                                         <% @admin_feedback_list.each do |feedback| %>
+                                       <tr>
+
+                                         <td><%= feedback[0] %></td>
+                                         <td><%= feedback[3] %></td>
+                                         <td><%= feedback[4]  %></td>
+                                         
+                                         <td><%= feedback[2]  %></td>
+                                         <td><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",feedback[1])[0][0]  %></td>
+                                         <td>
+                                            <% case feedback[5]  when 0 %>
+                                                <img src='images/red.png' class="icon" alt="broken link" />
+                                            
+                                            <% when 1 %>
+                                                <img src='images/green.png' class="icon" alt="working link"/>
+                                            <% else %>
+                                            <% end %>
+                                          </td> 
+                                        <td><form method="post" action="/admin_resolve_feedback">                                            
+                                             <input type="hidden" name="feedbackid" value= "<%= feedback[0] %>" >                                              
+                                               <input class="btn btn-info btn-sm" type="submit" value="Resolve">
+                                            </form></td>
+
+                                       </tr>
+                                     <% end %>
+                                     </tbody>
+                                 </table>
+                        </div>
+                    </div>
+                    
+        </div>
                     
                 
-            </div>
+            
         </div>
     </div>
     <footer>

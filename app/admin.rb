@@ -14,11 +14,16 @@ get '/admin_bookmarks' do
 end
 
 get '/admin_feedback' do 
+      @admin_feedback_list = $db.execute "SELECT * FROM feedback ORDER BY feedback_id ASC"   
     erb :admin_feedback
 end
 
 post '/admin_add_user' do
-   
      User.approve(params[:userid])
     redirect '/admin_user'
+end
+
+post '/admin_resolve_feedback' do
+     Feedback.approve(params[:feedbackid])
+    redirect '/admin_feedback'
 end

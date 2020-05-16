@@ -24,5 +24,17 @@ module Feedback
        result = $db.execute query, '%' + type + '%'
        return result[0][0]
    end
+   
+   def Feedback.approve(feedback_id)
+       query = "UPDATE feedback SET resolved = 1
+                 WHERE feedback_id = ?;"
+        begin
+            $db.execute query, feedback_id
+            result = true
+            puts "feedback resolved"
+        rescue SQLite3::ConstraintException
+            puts "failed to resolve"
+        end
+   end
     
 end
