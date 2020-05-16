@@ -1,17 +1,77 @@
-#searchbar{
+div #searchform{
     width: 100%;
     padding: 2%;
 }
 
-#searchbar form{
+div #sfbox{
     width: 100%;
+    max-width: 100%;
+    padding: 1%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div #searchbar{
+    width: 100%;
+    max-width: 100%
+
+    margin-left:auto;
+    margin-right: auto;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
+/*
+#filters{
+    width: 100%;
+    padding: 10%
 
-#searchbar input[type=search], select, textarea{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+*/
+div #options{
+    width: 100%;
+    max-width: 100%;
+
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+div #filter-option{
+    width: 10%;
+    /*padding: 1%;*/
+    margin: 1%;
+    /*border: 2px solid red;*/
+    overflow: auto;
+
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    /*display: flex;
+    justify-content: center;*/
+}
+
+form{
+    width: 100%;
+    margin: 2%;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+input[type=search], select, textarea{
   width: 70%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -19,7 +79,7 @@
   box-sizing: border-box;
 }
 
-#searchbar button[type=submit]{
+button[type=submit]{
     width: 15%;
     padding: 12px;
     border: 1px solid #ccc;
