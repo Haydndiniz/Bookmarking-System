@@ -37,21 +37,7 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <h3 class="text-dark mb-0">Feedback Review</h3>
-                        <ul class="nav navbar-nav flex-nowrap ml-auto">
-                            
-                            
-                            <div class="d-none d-sm-block topbar-divider"></div>
-                            <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
-                                   <span class="d-none d-lg-inline mr-2 text-gray-600 small">Welcome <%= session[:first_name]%> <%= session[:last_name]%></span></a>
-                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"
-                                        role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
-                                        <a
-                                            class="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log</a>
-                                            <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
-                                </div>
-                            </li>
-                        </ul>
+                        
                     </div>
                 </nav>
 <!--                flash notices -->
@@ -72,23 +58,10 @@
                                 <div class="card-body">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col mr-2">
-                                            <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Total Users</span></div>
-                                            <div class="text-dark font-weight-bold h5 mb-0"><span><%= User.getNumber(1) + User.getNumber(2) %></span></div>
+                                            <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>New Feedback</span></div>
+                                            <div class="text-dark font-weight-bold h5 mb-0"><span><%= Feedback.getNumber(0) %></span></div>
                                         </div>
-                                        <div class="col-auto"><i class="fas fa-user-friends fa-2x text-gray-300"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-3 mb-4">
-                            <div class="card shadow border-left-success py-2">
-                                <div class="card-body">
-                                    <div class="row align-items-center no-gutters">
-                                        <div class="col mr-2">
-                                            <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Signed in Users</span></div>
-                                            <div class="text-dark font-weight-bold h5 mb-0"><span>29409</span></div>
-                                        </div>
-                                        <div class="col-auto"><i class="fas fa-user-check fa-2x text-gray-300"></i></div>
+                                        <div class="col-auto"><i class="fas fa-comment fa-2x text-gray-300"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -98,30 +71,39 @@
                                 <div class="card-body">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col mr-2">
-                                            <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Reported Bookmarks</span></div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span><%= (Bookmark.getStatus(2)*100)/(Bookmark.getStatus(0)+Bookmark.getStatus(1)+ Bookmark.getStatus(2)) %></span></div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm">
-                                                        <div class="progress-bar bg-warning" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: <%= (Bookmark.getStatus(2)*100)/(Bookmark.getStatus(0)+Bookmark.getStatus(1)+ Bookmark.getStatus(2)) %>%;"><span class="sr-only">90%</span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Broken link feedback</span></div>
+                                            <div class="text-dark font-weight-bold h5 mb-0"><span><%= Feedback.getType("Broken links") %></span></div>
                                         </div>
-                                        <div class="col-auto"><i class="fas fa-bookmark fa-2x text-gray-300"></i></div>
+                                        <div class="col-auto"><i class="fas fa-unlink fa-2x text-gray-300"></i></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-xl-3 mb-4">
-                            <div class="card shadow border-left-danger py-2">
+                            <div class="card shadow border-left-warning py-2">
                                 <div class="card-body">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col mr-2">
-                                            <div class="text-uppercase text-danger font-weight-bold text-xs mb-1"><span>Broken Bookmarks</span></div>
-                                            <div class="text-dark font-weight-bold h5 mb-0"><span><%= Bookmark.getStatus(0) %></span></div>
+                                            <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Page not Found Feedback</span></div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span><%= Feedback.getType("Page not found") %></span></div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-search fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-left-secondary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-secondary font-weight-bold text-xs mb-1"><span>Other Feedback</span></div>
+                                            <div class="text-dark font-weight-bold h5 mb-0"><span><%= Feedback.getType("Other") %></span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-exclamation fa-2x text-gray-300"></i></div>
                                     </div>
@@ -133,123 +115,49 @@
                         <div class="col-lg-7 col-xl-6">
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-                                    <h6 class="text-primary font-weight-bold m-0">Bookmark Report Status</h6>
-                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
-                                        <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
-                                            role="menu">
-                                            <p class="text-center dropdown-header">Actions:</p><a class="dropdown-item" role="presentation" href="/admin_bookmarks">&nbsp;Manage Bookmarks</a>
-                                        </div>
-                                    </div>
+                                    <h6 class="text-primary font-weight-bold m-0">Feedback Status</h6>
+                                   
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-area"><canvas data-bs-chart="{&quot;type&quot;:&quot;doughnut&quot;,
-                                        &quot;data&quot;:{&quot;labels&quot;:[&quot;Active&quot;,&quot;Under Review&quot;,&quot;Broken&quot;],
+                                        &quot;data&quot;:{&quot;labels&quot;:[&quot;Broken Links&quot;,&quot;Inccorrect Data&quot;,&quot;Page Not Found&quot;,&quot;Other&quot;],
                                             &quot;datasets&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;backgroundColor&quot;:[&quot;#1cc88a&quot;,
-                                                &quot;#f6c23e&quot;,&quot;#e74a3b&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,
-                                                &quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;<%= Bookmark.getStatus(2) %>&quot;,&quot;<%= Bookmark.getStatus(1) %>&quot;,&quot;<%= Bookmark.getStatus(0) %>&quot;]}]},
+                                                &quot;#f6c23e&quot;,&quot;#e74a3b&quot;,&quot;#3e8ce4&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,
+                                                &quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;<%= Feedback.getType("Broken links") %>&quot;,&quot;<%= Feedback.getType("Incorrect data") %>&quot;,&quot;<%= Feedback.getType("Page not found") %>&quot;,&quot;<%= Feedback.getType("Other") %>&quot;]}]},
                                                 &quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false},&quot;title&quot;:{}}}"></canvas></div>
                                     <div
-                                        class="text-center small mt-4"><span class="mr-2"><i class="fas fa-circle text-success"></i>&nbsp;Active</span><span class="mr-2"><i class="fas fa-circle text-warning"></i>&nbsp;Under Review</span><span class="mr-2"><i class="fas fa-circle text-danger"></i>&nbsp;Broken</span></div>
+                                        class="text-center small mt-4"><span class="mr-2"><i class="fas fa-circle text-success"></i>&nbsp;Broken Links</span>
+                                       <span class="mr-2"><i class="fas fa-circle text-warning"></i>&nbsp;Incorrect Data</span>
+                                       <span class="mr-2"><i class="fas fa-circle text-danger"></i>&nbsp;Page not Found</span>
+                                       <span class="mr-2"><i class="fas fa-circle text-primary"></i>&nbsp;Other</span></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-7 col-xl-6">
                         <div class="card shadow mb-4">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h6 class="text-primary font-weight-bold m-0">User accounts</h6>
+                                <h6 class="text-primary font-weight-bold m-0">Resolved Feedback</h6>
                                 <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
                                         role="menu">
-                                        <p class="text-center dropdown-header">actions:</p><a class="dropdown-item" role="presentation" href="/admin_users">&nbsp;Manage Users</a></div>
+                                        <p class="text-center dropdown-header">actions:</p><a class="dropdown-item" role="presentation" href="/feedback">&nbsp;Add Feedback</a></div>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="chart-area"><canvas data-bs-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{
-                                    &quot;labels&quot;:[&quot;Active&quot;,&quot;Suspended&quot;],&quot;datasets&quot;
+                                    &quot;labels&quot;:[&quot;resolved&quot;,&quot;Unresolved&quot;],&quot;datasets&quot;
                                     :[{&quot;label&quot;:&quot;&quot;,&quot;backgroundColor&quot;:[&quot;#1cc88a&quot;,&quot;#858796&quot;],
-                                        &quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;<%= User.getNumber(1) %>&quot;,&quot;<%= User.getNumber(0) %>&quot;]}]},
+                                        &quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;<%= Feedback.getNumber(1) %>&quot;,&quot;<%= Feedback.getNumber(0) %>&quot;]}]},
                                         &quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false},&quot;title&quot;:{}}}"></canvas></div>
                                 <div
-                                    class="text-center small mt-4"><span class="mr-2"><i class="fas fa-circle text-success"></i>&nbsp;Active</span><span class="mr-2"><i class="fas fa-circle text-secondary"></i>&nbsp;Suspended</span></div>
+                                    class="text-center small mt-4"><span class="mr-2"><i class="fas fa-circle text-success"></i>&nbsp;Rresolved</span><span class="mr-2"><i class="fas fa-circle text-secondary"></i>&nbsp;Unresolved</span></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6 mb-4" style="height: 567px;">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="text-primary font-weight-bold m-0">Admin Checklist</h6>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col mr-2">
-                                        <h6 class="mb-0"><strong>Check new user requests</strong></h6></div>
-                                    <div class="col-auto">
-                                        <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="formCheck-1"><label class="custom-control-label" for="formCheck-1"></label></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col mr-2">
-                                        <h6 class="mb-0"><strong>Review reported bookmarks</strong></h6></div>
-                                    <div class="col-auto">
-                                        <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="formCheck-2"><label class="custom-control-label" for="formCheck-2"></label></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col mr-2">
-                                        <h6 class="mb-0"><strong>Review feedback</strong></h6></div>
-                                    <div class="col-auto">
-                                        <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="formCheck-3"><label class="custom-control-label" for="formCheck-3"></label></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col mr-2">
-                                        <h6 class="mb-0"><strong>Backup database</strong></h6></div>
-                                    <div class="col-auto">
-                                        <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox" id="formCheck-4"><label class="custom-control-label" for="formCheck-4"></label></div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="text-primary font-weight-bold m-0">Projects</h6>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="small font-weight-bold">Server migration<span class="float-right">20%</span></h4>
-                            <div class="progress mb-4">
-                                <div class="progress-bar bg-danger" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"><span class="sr-only">20%</span></div>
-                            </div>
-                            <h4 class="small font-weight-bold">Sales tracking<span class="float-right">40%</span></h4>
-                            <div class="progress mb-4">
-                                <div class="progress-bar bg-warning" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"><span class="sr-only">40%</span></div>
-                            </div>
-                            <h4 class="small font-weight-bold">Customer Database<span class="float-right">60%</span></h4>
-                            <div class="progress mb-4">
-                                <div class="progress-bar bg-primary" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60%</span></div>
-                            </div>
-                            <h4 class="small font-weight-bold">Payout Details<span class="float-right">80%</span></h4>
-                            <div class="progress mb-4">
-                                <div class="progress-bar bg-info" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"><span class="sr-only">80%</span></div>
-                            </div>
-                            <h4 class="small font-weight-bold">Account setup<span class="float-right">Complete!</span></h4>
-                            <div class="progress mb-4">
-                                <div class="progress-bar bg-success" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"><span class="sr-only">100%</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          
+                    
+                
             </div>
         </div>
     </div>

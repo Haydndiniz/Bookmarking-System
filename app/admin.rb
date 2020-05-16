@@ -4,6 +4,7 @@ end
 
 get '/admin_users' do 
      @user_list = $db.execute "SELECT * FROM users ORDER BY user_id ASC"
+      @new_user_list = $db.execute "SELECT * FROM users WHERE new = 1 ORDER BY user_id ASC"
     erb :admin_user_mgmt
 end
 
@@ -14,4 +15,10 @@ end
 
 get '/admin_feedback' do 
     erb :admin_feedback
+end
+
+post '/admin_add_user' do
+   
+     User.approve(params[:userid])
+    redirect '/admin_user'
 end

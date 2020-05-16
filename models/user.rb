@@ -39,5 +39,17 @@ module User
        result = $db.execute query
        return result[0][0]
    end
+   
+    def User.approve(user_id)
+       query = "UPDATE users SET active_status = 1, new = 0
+                 WHERE user_id = ?;"
+        begin
+            $db.execute query, user_id
+            result = true
+            puts "user added"
+        rescue SQLite3::ConstraintException
+            puts "failed to add user"
+        end
+   end
             
 end

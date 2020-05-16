@@ -112,11 +112,71 @@
                             </div>
                         </div>
                     </div>
+                                       
+ <div class="row">
+                        <div class="col-lg-13 col-xl-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-primary font-weight-bold m-0">New User Requests</h6>
+                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                        <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
+                                            role="menu">
+                                            <p class="text-center dropdown-header">Actions:</p><a class="dropdown-item" role="presentation" href="/signup">&nbsp;Add User</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="table">
+                                   <thead>
+                                     <tr>
+                                         <th>User ID</th>
+                                         <th>User Name</th>
+                                        <th>First Name</th>
+                                         <th>Last Name</th>
+                                         <th>Email</th>
+<!--                                          <th>Last Logged in</th> -->
+                                         <th>Status</th>
+                                         <th>Edit user</th>
+                                     </tr>
+                                   </thead>
+
+                                   <tbody>
+
+                                         <% @new_user_list.each do |new_user| %>
+                                       <tr>
+
+                                         <td><%= new_user[0] %></td>
+                                         <td><%= new_user[1] %></td>
+                                         <td><%= new_user[2] %></td>
+                                         <td><%= new_user[3] %></td>
+                                         <td><%= new_user[5] %></td>
+                                         <td>
+                                            <% case new_user[6] when 0 %>
+                                                <img src='images/red.png' class="icon" alt="suspended" />
+                                            <% when 1 %>
+                                                <img src='images/green.png' class="icon" alt="active"/>
+                                            <% else %>
+                                            <% end %>
+                                          </td> 
+                                         <td><form method="post" action="/admin_add_user">                                            
+                                             <input type="hidden" name="userid" value= "<%= new_user[0] %>" >                                              
+                                               <input class="btn btn-info btn-sm" type="submit" value="Approve">
+                                            </form></td>
+
+                                       </tr>
+                                     <% end %>
+                                     </tbody>
+                                 </table>
+                        </div>
+                    </div>
+                    
+        </div>
+    
+
                     <div class="row">
                         <div class="col-lg-13 col-xl-12">
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center">
-                                    <h6 class="text-primary font-weight-bold m-0">User Accounts</h6>
+                                    <h6 class="text-primary font-weight-bold m-0">All User Accounts</h6>
                                     <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
                                         <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
                                             role="menu">
@@ -156,7 +216,7 @@
                                             <% else %>
                                             <% end %>
                                           </td> 
-                                         <td><a class="btn btn-info btn-sm" href="/edit_user/<%= user[2] %>" target="_blank">Edit User</a></td>
+                                         <td><a class="btn btn-info btn-sm" href="/edit_user/<%= user[0] %>" target="_blank">Edit User</a></td>
 
                                        </tr>
                                      <% end %>
