@@ -32,20 +32,23 @@
            <% case bookmark[6] when 0 %>
                <img src='images/red.png' class="icon" alt="broken link" />
            <% when 1 %>
-               <img src='images/amber.png' class="icon" alt="link under review"/>
+               <img src='images/wrench.png' class="icon" alt="link under review"/>
            <% when 2 %>
                <img src='images/green.png' class="icon" alt="working link"/>
            <% else %>
            <% end %>
          </td>
          
-        <td><a tabindex="0" class="btn btn-sm btn-info" role="button"  data-html="true" data-toggle="popover" data-trigger="focus" title=<%= bookmark[1] %>
-               data-content="<div><b>Boomark ID: <%= bookmark[0] %></b> </div>
+         <td>
+             <a tabindex="0" class="btn btn-sm btn-info" role="button"  data-html="true" data-toggle="popover" data-trigger="focus" title="<%= bookmark[1] %>"
+               data-content="<div><b>Boomark ID: <%= bookmark[0] %></b></div>
                              <div><b>Description: </b><%= bookmark[4] %> </div>
-                             <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %> </div>">More Info</a>
-</td>
-
-        
+                             <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %> </div>
+                             ">More Info</a>
+             <% case bookmark[6] when 2 %>
+                 <div style="margin-left:20px"><a style="color:grey; text-decoration:underline; font-size:13px" href='/report/<%= bookmark[0] %>'>Report</a></div>
+             <% end %>
+         </td>
       </tr>
     <% end %>
     </tbody>

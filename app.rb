@@ -7,7 +7,7 @@ require 'sinatra/flash'
 require_relative 'app/main.rb'
 require_relative 'app/login.rb'
 require_relative 'app/new_bookmark.rb'
-require_relative 'app/new_feedback.rb'
+require_relative 'app/feedback.rb'
 require_relative 'app/edit_bookmark.rb'
 require_relative 'app/admin.rb'
 

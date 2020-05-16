@@ -29,10 +29,10 @@ module Bookmark
     
     def Bookmark.update(bookmark_name, link, description, last_updated, bookmark_id)
         result = false
-        updateQuery = "UPDATE bookmarks SET bookmark_name = ?, link = ?,
+        query = "UPDATE bookmarks SET bookmark_name = ?, link = ?,
                 description = ?, last_updated = ? WHERE  bookmark_id = ?;"
         begin
-            $db.execute updateQuery, bookmark_name, link, description, last_updated, bookmark_id
+            $db.execute query, bookmark_name, link, description, last_updated, bookmark_id
             result = true
             puts "Insertion success"
         rescue SQLite3::ConstraintException
@@ -47,4 +47,15 @@ module Bookmark
         return result[0][0]   
     end
     
+    def Bookmark.reportBookmark(bookmark_id)
+        query = "UPDATE bookmarks SET report_status = 1 where bookmark_id = ?;"
+        begin
+            $db.execute query, bookmark_id
+            result = true
+            puts "Insertion success"
+        rescue SQLite3::ConstraintException
+            puts "Insertion Failed"
+        end
+        return result
+    end
 end
