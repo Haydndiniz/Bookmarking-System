@@ -103,7 +103,8 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"password"	TEXT NOT NULL,
 	"email"	TEXT NOT NULL,
 	"active_status"	INTEGER NOT NULL DEFAULT 1,
-	"admin"	INTEGER NOT NULL DEFAULT 0
+	"admin"	INTEGER NOT NULL DEFAULT 0,
+   "new"	INTEGER NOT NULL DEFAULT 1
 );
 SQL
 
@@ -136,7 +137,7 @@ csvBookmarkHistory.each do |row|
 end
 
 csvUsers.each do |row|
-    DB.execute "insert into users values ( ?, ?, ?, ?, ?, ?, ?, ?)", row.fields
+    DB.execute "insert into users values ( ?, ?, ?, ?, ?, ?, ?, ?,?)", row.fields
 end
 
 csvTags.each do |row|

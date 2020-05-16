@@ -46,14 +46,12 @@
     <div id="searchbar">
         <%= erb :searchbar %>
     </div>
-    
+    <%= $user_signed_in %>
     <div id="table">
         <%= erb :bookmark_table %>
     </div>
     
     <!--footer-->
-<a data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>    <%= erb :home_footer %>
-
       <script>
    $(document).ready(function(){
      $('[data-toggle="popover"]').popover(); 

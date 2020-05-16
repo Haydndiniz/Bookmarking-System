@@ -16,9 +16,9 @@ module User
         session.nil? ? false : true   #we can verify if user is logged using function find_user
     end
     
-    def User.new(user_id, first_name, last_name, email, password)
+    def User.new( first_name, last_name, email, password)
         result = false
-        query = "INSERT INTO users (user_id, first_name, last_name, password, email, active_status,admin) VALUES(?, ?, ?, ?, ?,?,?);"
+        query = "INSERT INTO users ( first_name, last_name, password, email, active_status,admin) VALUES(?, ?, ?, ?,?,?);"
         begin
             $db.execute query, user_id, first_name, last_name, BCrypt::Password.create(password),email,0,0
             result = true
@@ -31,6 +31,12 @@ module User
    def User.getNumber(status)
        query = "SELECT COUNT(*)FROM users WHERE active_status = ?;"
        result = $db.execute query, status
+       return result[0][0]
+   end
+   
+   def User.getNew()
+       query = "SELECT COUNT(new)FROM users WHERE new = 1;"
+       result = $db.execute query
        return result[0][0]
    end
             
