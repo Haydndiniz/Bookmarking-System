@@ -11,6 +11,16 @@ module User
        return result
     end 
     
+    def User.find_email(email)  #method cheks if there's a user with given email
+       result = false
+       query = "SELECT email FROM users WHERE email = ?;"
+       rows = $db.execute query, email
+       if (rows.count == 1)
+           result = true
+       end
+       return result
+    end 
+    
       
     def User.logged_in?(session)      #not sure if we need separate function for this
         session.nil? ? false : true   #we can verify if user is logged using function find_user
