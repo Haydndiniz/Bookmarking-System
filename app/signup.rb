@@ -12,9 +12,13 @@ post '/signup' do
     @confirmed_password = params[:password_confirm]
     @password = params[:password]
     @email_used = User.find_email(@email)
+    @username_used = User.find_username(@username)
     
     if @email_used 
-        flash[:info] = "Sorry, this email is already used"
+        flash[:info] = "Sorry, this email is already registered"
+        redirect '/signup'
+    elsif @username
+        flash[:info] = "Sorry, this username is already used by a different user"
         redirect '/signup'
     elsif @email == @confirmed_email && @password == @confirmed_password
         User.new(@username, @first_name, @last_name, @password, @email)
