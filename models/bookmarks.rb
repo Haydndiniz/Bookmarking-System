@@ -14,6 +14,9 @@ module Bookmark
     end
     
     def Bookmark.find_by(search, tags)
+        # something is wrong, wont filter if 2 selected, only works for 1 at a time
+        # issue probably to do with dynamic generation of query
+        # the sql statement works perfectly in db browser
         searchTerm = '%' + search + '%'
         if tags == 0
             query = "SELECT DISTINCT * FROM bookmarks WHERE bookmark_name LIKE (?) OR link LIKE (?);"
@@ -21,18 +24,23 @@ module Bookmark
         else 
             tagsString = ""
             tags.each_value do |tag|
-                tagsString = tagsString + tag.to_s + ", "
+                tagsString = tagsString + tag.to_s + ', '
             end
             #get rid of extra ", " at the end of string
             tagsString = tagsString.chop
             tagsString = tagsString.chop
+            
+            #puts tags
+            #puts tagsString
+            
             #build the query
-            query = "SELECT DISTINCT bookmarks.bookmark_id, bookmark_name, link, description, creator, last_updated, report_status, rating, num_ratings 
+             query = "SELECT DISTINCT bookmarks.bookmark_id, bookmark_name, link, description, creator, last_updated, report_status, rating, num_ratings 
                     FROM bookmarks 
                     JOIN tagged_bookmarks ON bookmarks.bookmark_id = tagged_bookmarks.bookmark_id 
                     JOIN tags ON tagged_bookmarks.tag_id = tags.tag_id 
                     WHERE tags.name IN ((?)) 
                     AND (bookmark_name LIKE (?) OR link LIKE (?));"
+
             result = $db.execute query, tagsString, searchTerm, searchTerm
         end
         
