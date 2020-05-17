@@ -16,11 +16,11 @@ module User
         session.nil? ? false : true   #we can verify if user is logged using function find_user
     end
     
-    def User.new( first_name, last_name, email, password)
+    def User.new(username, first_name, last_name, password, email)
         result = false
-        query = "INSERT INTO users ( first_name, last_name, password, email, active_status,admin) VALUES(?, ?, ?, ?,?,?);"
+        query = "INSERT INTO users (username, first_name, last_name, password, email) VALUES(?,?,?,?);"
         begin
-            $db.execute query, user_id, first_name, last_name, BCrypt::Password.create(password),email,0,0
+            $db.execute query, username, first_name, last_name, BCrypt::Password.create(password),email
             result = true
         rescue SQLite3::ConstraintException
             puts "Insertion Failed"
