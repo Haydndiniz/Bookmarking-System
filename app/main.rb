@@ -2,7 +2,6 @@ before do
    @bookmark_list = $db.execute "SELECT * FROM bookmarks ORDER BY bookmark_name ASC"
    $users_signed_in = 0 
    @tags_list = $db.execute "SELECT * FROM tags ORDER BY name ASC"
-   #puts @tags_list
 end
 
 ##--------------------Get Methods--------------------#
@@ -33,8 +32,14 @@ end
 #search
 post '/index' do
     @search = params[:search]
-    #@tags = params[:tags]
-    @bookmark_list = Bookmark.find_by(@search)
+    
+    if params[:tags].nil?
+        @tags = 0
+    else
+        @tags = params[:tags]
+    end
+    
+    @bookmark_list = Bookmark.find_by(@search, @tags)
     erb :index
 end
 

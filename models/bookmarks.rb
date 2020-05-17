@@ -13,11 +13,23 @@ module Bookmark
         return result
     end
     
-    def Bookmark.find_by(search)
-        #db = Sqlite::Database.new '../database/acme_db.sqlite'
-        query = "SELECT * FROM bookmarks WHERE bookmark_name LIKE (?);"
-        result = $db.execute query, '%' + search + '%'
+    def Bookmark.find_by(search, tags)
+        if tags == 0
+            query = "SELECT DISTINCT * FROM bookmarks WHERE bookmark_name LIKE (?) OR link LIKE (?);"
+            result = $db.execute query, '%' + search + '%', '%' + search + '%'
+        else 
+            tagsString = ""
+            tags.each_value do |tag|
+                tagsString = tagsString + tag[1].to_s
+            end
+            # this part is temporary, so that webapp still runs w/o errors
+            query = "SELECT DISTINCT * FROM bookmarks WHERE bookmark_name LIKE (?) OR link LIKE (?);"
+            result = $db.execute query, '%' + search + '%', '%' + search + '%'
+        end
         return result
+        #query = "SELECT * FROM bookmarks WHERE bookmark_name LIKE (?);"
+        #result = $db.execute query, '%' + search + '%'
+        #return result
     end
     
     def Bookmark.find_by_id(bookmark_id)
