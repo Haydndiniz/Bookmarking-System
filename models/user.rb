@@ -21,6 +21,16 @@ module User
        return result
     end 
     
+    def User.find_username(username)  #method cheks if there's a user with given username
+       result = false
+       query = "SELECT username FROM users WHERE username = ?;"
+       rows = $db.execute query, username
+       if (rows.count == 1)
+           result = true
+       end
+       return result
+    end
+    
       
     def User.logged_in?(session)      #not sure if we need separate function for this
         session.nil? ? false : true   #we can verify if user is logged using function find_user
