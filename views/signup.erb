@@ -32,14 +32,16 @@
     <% end %>
         <!--BODY-->
  
-        <div class="bookmark-dark" style="height: 790px;">
-            <form  action="/new_User" method="post" style="margin: 0px;height: 340px;width: 500px;margin-top: -70px;">
+        <div class="bookmark-dark" style="height: 780px;">
+            <form  action="/signup" method="post" style="margin: 0px;height: 500px;width: 500px;margin-top: -70px;">
                 <h2 class="sr-only">Login Form</h2>
                 <div class="form-group"><input class="form-control" type="text" name="first_name" placeholder="Enter your first name" required="" maxlength = "40"></div>
                 <div class="form-group"><input class="form-control" type="text" name="last_name" placeholder="Enter your last name" required=""></div>
-                <div class="form-group"><input class="form-control" type="text" name="email" placeholder="Enter your email" required="" maxlength="40"></div>
                 <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Enter your username" required="" maxlength="40"></div>
+                <div class="form-group"><input class="form-control" type="text" name="email" placeholder="Enter your email" required="" maxlength="40"></div>
+                <div class="form-group"><input class="form-control" type="text" name="email_confirm" placeholder="Confirm your email" required="" maxlength="40"></div>
                 <div class="form-group"><input class="form-control" type="text" name="password" placeholder="Enter your password" required="" maxlength="40"></div>
+                <div class="form-group"><input class="form-control" type="text" name="password_confirm" placeholder="Confirm your password" required="" maxlength="40"></div>
                 <div class="form-group"><button class="btn btn-secondary btn-block" type="reset" style="width: 176px;">Reset Form</button>
                     <button class="btn btn-primary btn-block" type="submit" style="width: 176px;margin: 235px;margin-top: -38px;margin-right: 130px;height: 38px;padding: 0px;">Create account</button></div>
             </form>

@@ -8,13 +8,15 @@ post '/signup' do
     @last_name = params[:last_name]
     @username = params[:username]
     @email = params[:email]
+    @confirmed_email = params[:email_confirm]
+    @confirmed_password = params[:password_confirm]
     @password = params[:password]
     
-    User.new(@username, @first_name, @last_name, @password, @email)
+    if @email == @confirmed_email && @password == @confirmed_password
+        User.new(@username, @first_name, @last_name, @password, @email)
+        redirect '/login'
+    else
+        redirect '/signup'
+    end
     
-#     add_bookmark = "INSERT INTO bookmarks (bookmark_name, link, description, creator, last_updated) VALUES (?,?,?,?,?)"
-    
-#     $db.execute add_bookmark, params[:bookmark_name], params[:link], params[:description], session[:user_id], @last_updated
-    
-    redirect '/login'
 end
