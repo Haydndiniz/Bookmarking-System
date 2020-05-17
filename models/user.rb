@@ -18,9 +18,9 @@ module User
     
     def User.new(username, first_name, last_name, password, email)
         result = false
-        query = "INSERT INTO users (username, first_name, last_name, password, email) VALUES(?,?,?,?);"
+        query = "INSERT INTO users (username, first_name, last_name, password, email) VALUES(?,?,?,?,?);"
         begin
-            $db.execute query, username, first_name, last_name, BCrypt::Password.create(password),email
+            $db.execute query, username, first_name, last_name, BCrypt::Password.create(password), email
             result = true
         rescue SQLite3::ConstraintException
             puts "Insertion Failed"
