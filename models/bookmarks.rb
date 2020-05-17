@@ -14,22 +14,29 @@ module Bookmark
     end
     
     def Bookmark.find_by(search, tags)
+        searchTerm = '%' + search + '%'
         if tags == 0
             query = "SELECT DISTINCT * FROM bookmarks WHERE bookmark_name LIKE (?) OR link LIKE (?);"
-            result = $db.execute query, '%' + search + '%', '%' + search + '%'
+            result = $db.execute query, searchTerm, searchTerm
         else 
             tagsString = ""
             tags.each_value do |tag|
-                tagsString = tagsString + tag[1].to_s
+                tagsString = tagsString + tag.to_s + ", "
             end
-            # this part is temporary, so that webapp still runs w/o errors
-            query = "SELECT DISTINCT * FROM bookmarks WHERE bookmark_name LIKE (?) OR link LIKE (?);"
-            result = $db.execute query, '%' + search + '%', '%' + search + '%'
+            #get rid of extra ", " at the end of string
+            tagsString = tagsString.chop
+            tagsString = tagsString.chop
+            #build the query
+            query = "SELECT DISTINCT bookmarks.bookmark_id, bookmark_name, link, description, creator, last_updated, report_status, rating, num_ratings 
+                    FROM bookmarks 
+                    JOIN tagged_bookmarks ON bookmarks.bookmark_id = tagged_bookmarks.bookmark_id 
+                    JOIN tags ON tagged_bookmarks.tag_id = tags.tag_id 
+                    WHERE tags.name IN ((?)) 
+                    AND (bookmark_name LIKE (?) OR link LIKE (?));"
+            result = $db.execute query, tagsString, searchTerm, searchTerm
         end
+        
         return result
-        #query = "SELECT * FROM bookmarks WHERE bookmark_name LIKE (?);"
-        #result = $db.execute query, '%' + search + '%'
-        #return result
     end
     
     def Bookmark.find_by_id(bookmark_id)

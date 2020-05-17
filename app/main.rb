@@ -33,6 +33,7 @@ end
 post '/index' do
     @search = params[:search]
     
+    #checks if tags have been input
     if params[:tags].nil?
         @tags = 0
     else
