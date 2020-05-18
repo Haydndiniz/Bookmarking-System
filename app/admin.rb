@@ -41,21 +41,14 @@ get '/admin_feedback' do
    end
 end
 
-get '/admin_edit_user/:id' do
+get '/admin_edit_user' do
    if !session[:admin]  
       flash[:warning] = "You wandered into protected space, please login to continue"
        redirect '/login'
+   else   
+    erb :admin_edit_user
    end
-    session[:editing_id] = params["id"]
-    redirect '/admin_edit_user'
-  
 end
-
-get '/admin_edit_user' do
-   erb :admin_edit_user
-end
-
-
 
 ##--------------------Post Methods--------------------#
 
@@ -69,4 +62,3 @@ post '/admin_resolve_feedback' do
      Feedback.approve(params[:feedbackid])
     redirect '/admin_feedback'
 end
-
