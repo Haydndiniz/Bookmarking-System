@@ -1,5 +1,5 @@
 feedback_id,user_id,date_time,feedback_topic,feedback,resolved
-1,1,"29/03/2019 17:11","Broken links"," test feedback",0
+1,1,"29/03/2019 17:11","Broken links"," test feedback",1
 2,7,"2020/05/16 11:05","Page not found","testing page not found feedback",0
 3,7,"2020/05/16 11:05","Incorrect data","testing incorrect data feedback",0
 4,7,"2020/05/16 11:05",Other,"testing other feedback",0

@@ -20,6 +20,7 @@
         <td><%= @bookmark_list.find_index(bookmark) + 1 %></td>
         <td><%= bookmark[1] %></td>
         <td><a class="btn btn-info btn-sm" href="<%= bookmark[2] %>" target="_blank"><%= Bookmark.getHost(bookmark[2]) %></a></td>
+
         <td>
            <form class="rating" method="post" action="/submit_rating" style="justify-content: left;">
   
@@ -65,7 +66,9 @@
                     <% end %>  
                  </div>
          </form>
+
         </td>
+        
         <td><%= bookmark[5] %></td>
          
         <td>
@@ -87,6 +90,7 @@
                data-content="<div><b>Boomark ID: <%= bookmark[0] %></b></div>
                              <div><b>Description: </b><%= bookmark[4] %> </div>
                              <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %> </div>
+                             
                              ">More Info</a>
              
          </td>

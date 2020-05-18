@@ -77,5 +77,25 @@ module User
             puts "failed to add user"
         end
    end
+   
+   #method for admins to update users
+   def User.update(user_id, username, first_name, last_name, email, active_status)
+       query = "UPDATE users SET username = ?, first_name = ?, last_name = ?, email = ?, active_status = ?
+                WHERE user_id = ?;"
+     begin
+         $db.execute query, username, first_name, last_name, email, active_status, user_id
+        
+         puts "user updated"
+     rescue SQLite3::ConstraintException
+         puts "failed to update user"
+     end
+   end
+   
+#    admin method to find a user. returns an array of user info
+   def User.admin_find_user(id)
+       query = "SELECT * FROM users WHERE user_id = ?;"
+       user = $db.execute query, id
+       return user [0]
+    end 
             
 end
