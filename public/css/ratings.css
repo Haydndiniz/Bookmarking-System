@@ -1,0 +1,12 @@
+#ratingElement{
+    padding: 1px;
+    padding-left:10px;
+    border-top: none;
+}
+#ratingForm{
+    width:160px;
+}
+#ratingBox{
+    width:200px;
+    padding: 0px;
+}
