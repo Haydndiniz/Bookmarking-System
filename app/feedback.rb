@@ -28,9 +28,9 @@ post '/sendFeedback' do
     if @feeback_topic == "Broken links"
         puts session[:reporting_id]
         Bookmark.reportBookmark(session[:reporting_id])
-        Feedback.new(@current_user, @date_time, @feeback_topic, @feedback)
+        Feedback.new(@current_user, @date_time, @feeback_topic, @feedback, session[:reporting_id])
     else
-        Feedback.new(@current_user, @date_time, @feeback_topic, @feedback)
+        Feedback.new(@current_user, @date_time, @feeback_topic, @feedback, "null")
     end
     
     redirect '/'

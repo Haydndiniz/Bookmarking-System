@@ -116,12 +116,13 @@ CREATE TABLE IF NOT EXISTS "feedback" (
     "feedback_topic" TEXT NOT NULL,
 	"feedback"	TEXT NOT NULL,
 	"resolved"	INTEGER NOT NULL DEFAULT 0,
+    "bookmark_id",
 	FOREIGN KEY("user_id") REFERENCES "users"("user_id")
   );
 SQL
 
 csvFeedback.each do |row|
-    DB.execute "insert into feedback values ( ?, ?, ?, ?, ?, ?)", row.fields
+    DB.execute "insert into feedback values (?, ?, ?, ?, ?, ?, ?)", row.fields
 end
 
 csvTaggedBookmarks.each do |row|
