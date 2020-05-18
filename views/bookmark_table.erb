@@ -37,6 +37,9 @@
                <img src='images/green.png' class="icon" alt="working link"/>
            <% else %>
            <% end %>
+           <% case bookmark[6] when 2 %>
+               <a style="color:grey; text-decoration:underline; font-size:13px" href='/report/<%= bookmark[0] %>'>Report</a>
+           <% end %>
          </td>
          
          <td>
@@ -45,9 +48,7 @@
                              <div><b>Description: </b><%= bookmark[4] %> </div>
                              <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %> </div>
                              ">More Info</a>
-             <% case bookmark[6] when 2 %>
-                 <div style="margin-left:20px"><a style="color:grey; text-decoration:underline; font-size:13px" href='/report/<%= bookmark[0] %>'>Report</a></div>
-             <% end %>
+             
          </td>
       </tr>
     <% end %>
