@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Edit User - ACME</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/home_footer.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+        <link rel="stylesheet" href="css/signup.css">
+    </head>
+    
+    <body>
+<!--navigation bar-->
+    <% if session[:logged_in] && session[:admin] %>
+        <header class="sticky"><%= erb :admin_header %></header>
+    <% elsif session[:logged_in] && !session[:admin] %>
+        <header class="sticky"><%= erb :user_header %></header>
+    <% else %>
+        <header class="sticky"><%= erb :home_header %></header>
+    <% end %>
+
+    <% flash.keys.each do |type| %>
+
+      <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+        <strong><%= flash[type] %></strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+        <!--BODY-->
+ 
+        <div class="bookmark-dark" style="height: 780px;">
+            <form  action="/signup" method="post" style="margin: 0px;height: 500px;width: 500px;margin-top: -70px;">
+                <h2 class="sr-only">Login Form</h2>
+                <div class="form-group"><input class="form-control" type="text" name="first_name" placeholder="Enter your first name" required="" maxlength = "40"></div>
+                <div class="form-group"><input class="form-control" type="text" name="last_name" placeholder="Enter your last name" required=""></div>
+                <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Enter your username" required="" maxlength="40"></div>
+                <div class="form-group"><input class="form-control" type="text" name="email" placeholder="Enter your email" required="" maxlength="40"></div>
+                <div class="form-group"><input class="form-control" type="text" name="email_confirm" placeholder="Confirm your email" required="" maxlength="40"></div>
+                <div class="form-group"><input class="form-control" type="text" name="password" placeholder="Enter your password" required="" maxlength="40"></div>
+                <div class="form-group"><input class="form-control" type="text" name="password_confirm" placeholder="Confirm your password" required="" maxlength="40"></div>
+                <div class="form-group"><button class="btn btn-secondary btn-block" type="reset" style="width: 176px;">Reset Form</button>
+                    <button class="btn btn-primary btn-block" type="submit" style="width: 176px;margin: 235px;margin-top: -38px;margin-right: 130px;height: 38px;padding: 0px;">Create account</button></div>
+            </form>
+        </div>
+<!------------------------footer---------------->
+        
+        <%= erb :home_footer %>
+       
+ 
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="js/script.min.js"></script>
+    </body>
+</html>
