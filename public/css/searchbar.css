@@ -49,13 +49,15 @@ div #filter-option{
     width: 10%;
     /*padding: 1%;*/
     margin: 1%;
-    /*border: 2px solid red;*/
     overflow: auto;
 
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    
+    text-align: center; /* center checkbox horizontally */
+    vertical-align: middle; /* center checkbox vertically */
 
     /*display: flex;
     justify-content: center;*/
@@ -85,4 +87,9 @@ button[type=submit]{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+input[type=checkbox] {
+    transform: scale(1.5);
+    margin-right: 6%;
 }
