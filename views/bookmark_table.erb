@@ -20,12 +20,29 @@
         <td><%= @bookmark_list.find_index(bookmark) + 1 %></td>
         <td><%= bookmark[1] %></td>
         <td><a class="btn btn-info btn-sm" href="<%= bookmark[2] %>" target="_blank"><%= Bookmark.getHost(bookmark[2]) %></a></td>
-        <td>
-            <span style="font-size: 120%;"><span style="color: #fcad03; ">
-            <% for i in 1..(bookmark[7].round(1))%> ★ <% end %></span>
-            <% for i in 1..(5-bookmark[7].round(1))%> ☆ <% end %></span>
-            (<%= bookmark[8] %>)
+        <td id="ratingBox">    
+        
+        <form method='post' id="ratingForm">
+        <table padding-top="0" margin-top="0" font-size="1s20%">
+        <tr>
+        <span style="font-size: 120%;">
+        <% for i in 1..(bookmark[7].round(1))%><th id="ratingElement"><span style="color: #fcad03; ">★</span></th><% end %>
+        <% for i in 1..(5-bookmark[7].round(1))%> <th id="ratingElement">☆</th> <% end %>
+        </span>
+
+        </tr>
+        <tr>
+        <td id="ratingElement"><input type='radio' id='rating1' name='rating' value='1'></td>
+        <td id="ratingElement"><input type='radio' id='rating2' name='rating' value='2'></td>
+        <td id="ratingElement"><input type='radio' id='rating3' name='rating' value='3'></td>
+        <td id="ratingElement"><input type='radio' id='rating4' name='rating' value='4'></td>
+        <td id="ratingElement"><input type='radio' id='rating5' name='rating' value='5'></td>
+        </tr>
+        </table>
+         (<%= bookmark[8] %>) 
+        </form>
         </td>
+        
         <td><%= bookmark[5] %></td>
          
         <td>
@@ -47,6 +64,7 @@
                data-content="<div><b>Boomark ID: <%= bookmark[0] %></b></div>
                              <div><b>Description: </b><%= bookmark[4] %> </div>
                              <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %> </div>
+                             
                              ">More Info</a>
              
          </td>
