@@ -86,10 +86,9 @@ module Bookmark
         return result
     end
    
-   #method to get the truncated url
+   #method to get the truncated url without subpages
    def Bookmark.getHost(url)
-      uri = URI(url)
-      
+      uri = URI(url)  
       return uri.host      
    end
 end

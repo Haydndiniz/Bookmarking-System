@@ -31,3 +31,9 @@ post '/EditBookmark' do
     
     redirect '/'
 end
+
+post '/submit_rating' do
+   puts params[:bookmark_id]
+   puts params[:stars]
+   redirect '/'
+end
