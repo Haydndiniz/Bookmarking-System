@@ -10,7 +10,7 @@ end
 #get method for admin users, retrieves users from db and stores it in an array
 get '/admin_users' do 
    if !session[:admin]  
-      flash[:warning] = "You wandered into protected space, please login to continue"
+       flash[:warning] = "You wandered into protected space, please login to continue"
        redirect '/login'
    else
      @user_list = $db.execute "SELECT * FROM users ORDER BY user_id ASC"
@@ -41,12 +41,11 @@ get '/admin_feedback' do
    end
 end
 
-get'/admin_edit_user'
- if !session[:admin]  
+get '/admin_edit_user' do
+   if !session[:admin]  
       flash[:warning] = "You wandered into protected space, please login to continue"
        redirect '/login'
-   else
-        
+   else   
     erb :admin_edit_user
    end
 end

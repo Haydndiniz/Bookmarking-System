@@ -4,7 +4,7 @@ get '/new_bookmark' do
        redirect '/login'
    else
     erb :new_bookmark
-   
+   end
 end
 
 post '/new_Bookmark' do
