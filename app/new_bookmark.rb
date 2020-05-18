@@ -1,6 +1,10 @@
 get '/new_bookmark' do
-    redirect '/index' if !session[:logged_in]
+   if !session[:logged_in]  
+      flash[:warning] = "Please login to create a bookmark"
+       redirect '/login'
+   else
     erb :new_bookmark
+   end
 end
 
 post '/new_Bookmark' do

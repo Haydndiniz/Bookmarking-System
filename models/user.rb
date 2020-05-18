@@ -11,7 +11,8 @@ module User
        return result
     end 
     
-    def User.find_email(email)  #method cheks if there's a user with given email
+   #method checks if there's a user with given email
+    def User.find_email(email)  
        result = false
        query = "SELECT email FROM users WHERE email = ?;"
        rows = $db.execute query, email
@@ -21,7 +22,8 @@ module User
        return result
     end 
     
-    def User.find_username(username)  #method cheks if there's a user with given username
+   #method checks if there's a user with given username
+    def User.find_username(username)  
        result = false
        query = "SELECT username FROM users WHERE username = ?;"
        rows = $db.execute query, username
@@ -31,11 +33,12 @@ module User
        return result
     end
     
-      
-    def User.logged_in?(session)      #not sure if we need separate function for this
+    #we can verify if user is logged using function find_user
+    def User.logged_in?(session)      
         session.nil? ? false : true   #we can verify if user is logged using function find_user
     end
     
+   #method to create a new user and add to database
     def User.new(username, first_name, last_name, password, email)
         result = false
         query = "INSERT INTO users (username, first_name, last_name, password, email) VALUES(?,?,?,?,?);"
@@ -48,18 +51,21 @@ module User
         return result
     end
    
+   #method to get number of active/suspended users
    def User.getNumber(status)
        query = "SELECT COUNT(*)FROM users WHERE active_status = ?;"
        result = $db.execute query, status
        return result[0][0]
    end
    
+   #method to get number of new users
    def User.getNew()
        query = "SELECT COUNT(new)FROM users WHERE new = 1;"
        result = $db.execute query
        return result[0][0]
    end
    
+   #method to approve users and update ddatabase
     def User.approve(user_id)
        query = "UPDATE users SET active_status = 1, new = 0
                  WHERE user_id = ?;"

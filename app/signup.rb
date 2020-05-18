@@ -17,7 +17,7 @@ post '/signup' do
     if @email_used 
         flash[:info] = "Sorry, this email is already registered"
         redirect '/signup'
-    elsif @username
+    elsif @username_used
         flash[:info] = "Sorry, this username is already used by a different user"
         redirect '/signup'
     elsif @email == @confirmed_email && @password == @confirmed_password

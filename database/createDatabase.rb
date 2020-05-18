@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"last_name"	TEXT,
 	"password"	TEXT NOT NULL,
 	"email"	TEXT NOT NULL,
-	"active_status"	INTEGER NOT NULL DEFAULT 1,
+	"active_status"	INTEGER NOT NULL DEFAULT 0,
 	"admin"	INTEGER NOT NULL DEFAULT 0,
    "new"	INTEGER NOT NULL DEFAULT 1
 );

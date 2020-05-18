@@ -34,7 +34,6 @@ post '/login' do
     query = "SELECT * FROM users WHERE email = ?;"
     @userInfo = $db.execute query, @email 
     @active = @userInfo[0][6]
-        puts @active
     end
         
     if  @active == 1
@@ -50,7 +49,7 @@ post '/login' do
 
         if @userInfo[0][7] == 1
             session[:admin] = true #User is an admin
-            flash[:info] = "welcome to system control"
+            flash[:info] = "Welcome to system control"
             redirect'/admin'
         end
        
