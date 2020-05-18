@@ -1,10 +1,10 @@
 module Feedback
     
-    def Feedback.new(user_id, date_time, feedback_topic, feedback)
+    def Feedback.new(user_id, date_time, feedback_topic, feedback, bookmark_id)
         result = false
-        insert = "INSERT INTO feedback (user_id, date_time, feedback_topic, feedback) VALUES(?, ?, ?, ?);"
+        insert = "INSERT INTO feedback (user_id, date_time, feedback_topic, feedback, bookmark_id) VALUES(?, ?, ?, ?, ?);"
         begin
-            $db.execute insert, user_id, date_time, feedback_topic, feedback
+            $db.execute insert, user_id, date_time, feedback_topic, feedback, bookmark_id
             result = true
             puts "Insertion success"
         rescue SQLite3::ConstraintException

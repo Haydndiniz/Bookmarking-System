@@ -1,6 +1,8 @@
-feedback_id,user_id,date_time,feedback_topic,feedback,resolved
-1,1,"29/03/2019 17:11","Broken links"," test feedback",0
-2,7,"2020/05/16 11:05","Page not found","testing page not found feedback",0
-3,7,"2020/05/16 11:05","Incorrect data","testing incorrect data feedback",0
-4,7,"2020/05/16 11:05",Other,"testing other feedback",0
-5,7,"2020/05/16 11:06","Broken links","testing broken link feedback",0
+feedback_id,user_id,date_time,feedback_topic,feedback,resolved,bookmark_id
+1,1,"29/03/2019 17:11","Broken links"," test feedback",0,null
+2,7,"2020/05/16 11:05","Page not found","testing page not found feedback",0,null
+3,7,"2020/05/16 11:05","Incorrect data","testing incorrect data feedback",0,null
+4,7,"2020/05/16 11:05",Other,"testing other feedback",0,null
+5,7,"2020/05/16 11:06","Broken links","testing broken link feedback",0,null
+6,6,"2020/05/18 22:02","Broken links","test to see if it links em",0,2
+7,6,"2020/05/18 22:04","Page not found","test to see if it passes null as id",0,null
