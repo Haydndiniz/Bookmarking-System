@@ -29,7 +29,11 @@ post '/history' do
 end
 
 post '/add_to_history' do
-    #History.new(0,0,0)
-    puts "added to history"
+    @user_id = session[:user_id]
+    @visited_bookmark_id = params[:bookmark_id].to_i
+    @visit_time = Time.now.strftime("%Y/%m/%d %H:%M").to_s
+    History.new(@user_id, @visited_bookmark_id, @visit_time)
+    
+    puts "#{@user_id} #{@visited_bookmark_id} #{@visit_time} added to history"
     redirect'/'
 end

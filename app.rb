@@ -18,6 +18,7 @@ require_relative 'app/history.rb'
 require_relative 'models/user.rb'
 require_relative 'models/bookmarks.rb'
 require_relative 'models/feedback.rb'
+require_relative 'models/history'
 
 puts "#{Socket.gethostname}"
 
