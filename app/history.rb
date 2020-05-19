@@ -14,7 +14,7 @@ end
 ##--------------------Post Methods--------------------#
 
 #search
-post '/index' do
+post '/history' do
     @search = params[:search]
     
     #checks if tags have been input

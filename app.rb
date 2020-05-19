@@ -12,6 +12,7 @@ require_relative 'app/feedback.rb'
 require_relative 'app/edit_bookmark.rb'
 require_relative 'app/admin.rb'
 require_relative 'app/signup.rb'
+require_relative 'app/history.rb'
 
 
 require_relative 'models/user.rb'
