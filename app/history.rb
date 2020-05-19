@@ -1,5 +1,17 @@
 before do
-   @bookmark_list_history = $db.execute "SELECT * FROM bookmark_history ORDER BY date ASC"
+   @ids_in_history = Array.new
+   @bookmark_list_array = Array.new
+    
+   query = "SELECT bookmark_id FROM bookmark_history WHERE user_id = ?"
+   @ids_in_history = $db.execute query, session[:user_id]
+   
+   @bookmark_list_array.clear
+   @ids_in_history.each do |id|
+       @bookmark_list_array.push(Bookmark.find_by_id(id))
+   end
+   
+   @bookmark_list_history = @bookmark_list_array
+   puts "#{@bookmark_list_history}"
    $users_signed_in = 0 
    @tags_list = $db.execute "SELECT * FROM tags ORDER BY name ASC"
 end
