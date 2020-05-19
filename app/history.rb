@@ -7,7 +7,7 @@ before do
      
    @bookmark_list_array.clear
    @ids_in_history.each do |id|
-       @bookmark_list_array.push(Bookmark.find_by_id(id))
+       @bookmark_list_array.insert(0, Bookmark.find_by_id(id))
    end
    
    @bookmark_list_history = @bookmark_list_array
@@ -44,7 +44,12 @@ post '/add_to_history' do
     @user_id = session[:user_id]
     @visited_bookmark_id = params[:bookmark_id].to_i
     @visit_time = Time.now.strftime("%Y/%m/%d %H:%M").to_s
+    Bookmark.updateLastVisited(@visited_bookmark_id, @visit_time)
+    
+    
+        
     History.new(@user_id, @visited_bookmark_id, @visit_time)
+   
     
     puts "#{@user_id} #{@visited_bookmark_id} #{@visit_time} added to history"
     redirect'/'

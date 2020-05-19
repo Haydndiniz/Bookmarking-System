@@ -90,7 +90,8 @@ CREATE TABLE IF NOT EXISTS "bookmarks" (
 	"last_updated"	TEXT,
 	"report_status"	INTEGER DEFAULT 2,
 	"rating"	INTEGER DEFAULT 0,
-	"num_ratings"	INTEGER DEFAULT 0
+	"num_ratings"	INTEGER DEFAULT 0,
+    "last_visited"  TEXT
 );
 SQL
 
@@ -128,7 +129,7 @@ csvTaggedBookmarks.each do |row|
 end
 
 csvBookmarks.each do |row|
-    DB.execute "insert into bookmarks values ( ?, ?, ?, ?, ?, ?, ?, ?, ?)", row.fields
+    DB.execute "insert into bookmarks values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", row.fields
 end
 
 

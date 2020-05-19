@@ -100,6 +100,18 @@ module Bookmark
         return result
     end
     
+    def Bookmark.updateLastVisited(bookmark_id, last_visited)
+        query = "UPDATE bookmarks SET last_visited = ? WHERE bookmark_id = ?;"
+        begin
+            $db.execute query, last_visited, bookmark_id
+            result = true
+            puts "Last visit date updated"
+        rescue SQLite3::ConstraintException
+            puts "Insertion Failed"
+        end
+        return result
+    end
+    
    #method to get the truncated url without subpages
    def Bookmark.getHost(url)
       uri = URI(url)  

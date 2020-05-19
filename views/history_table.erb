@@ -9,6 +9,7 @@
         <th>Last Updated</th>
         <th>Status</th>
         <th>More Info</th>
+        <th>Last visited</th>
     </tr>
   </thead>
 
@@ -94,6 +95,10 @@
                              <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %> </div>
                              ">More Info</a>
              
+         </td>
+          
+         <td>
+             <%= bookmark[9] %>
          </td>
       </tr>
     <% end %>
