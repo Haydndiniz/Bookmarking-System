@@ -22,7 +22,7 @@ post '/signup' do
         redirect '/signup'
     elsif @email == @confirmed_email && @password == @confirmed_password
         User.new(@username, @first_name, @last_name, @password, @email)
-        #flash[:info] = "Your account is created. You can now log in"
+        flash[:info] = "Your account is waiting for admin verification"
         redirect '/login'
     else
         redirect '/signup'

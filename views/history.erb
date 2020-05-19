@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>History - ACME</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/home_footer.css">
+    <link rel="stylesheet" href="css/searchbar.css">
+    <link rel="stylesheet" href="css/rating_system.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+
+    body {
+    padding-top: 110px;
+    padding-left: 50px;
+    padding-right:50px
+    }
+ 
+    </style>
+</head>
+
+
+<body id="bg">
+    <!--navigation bar-->
+    <% if session[:logged_in] && session[:admin] %>
+        <header class="sticky"><%= erb :admin_header %></header>
+    <% elsif session[:logged_in] && !session[:admin] %>
+        <header class="sticky"><%= erb :user_header %></header>
+    <% else %>
+        <header class="sticky"><%= erb :home_header %></header>
+    <% end %>
+
+    <% flash.keys.each do |type| %>
+
+      <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+        <strong><%= flash[type] %></strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+    <% end %>
+    <!--main content-->
+    <div id="searchform">
+        <%= erb :searchbar %>
+    </div>
+    <%= $user_signed_in %>
+    <div id="table">
+        <%= erb :bookmark_table %>
+    </div>
+    
+    <!--footer-->
+      <script>
+   $(document).ready(function(){
+     $('[data-toggle="popover"]').popover(); 
+   });
+   </script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="js/script.min.js"></script>
+
+
+</body>
+
+</html>
