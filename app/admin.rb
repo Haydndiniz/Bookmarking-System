@@ -41,11 +41,25 @@ get '/admin_feedback' do
    end
 end
 
+get '/admin_edit_user/:id' do
+    if !session[:admin]  
+      flash[:warning] = "You wandered into protected space, please login to continue"
+       redirect '/login'
+    end   
+    
+    redirect '/index' if !session[:admin]
+    
+    session[:editing_id] = params["id"]
+   
+    redirect '/admin_edit_user'
+end
+
 get '/admin_edit_user' do
    if !session[:admin]  
       flash[:warning] = "You wandered into protected space, please login to continue"
        redirect '/login'
    else   
+      @admin_editing_user = User.admin_find_user(session[:editing_id])
     erb :admin_edit_user
    end
 end
@@ -56,6 +70,19 @@ end
 post '/admin_add_user' do
      User.approve(params[:userid])
     redirect '/admin_users'
+end
+
+post '/admin_update_user' do
+    @user_id = params[:user_id]
+    @first_name = params[:fname]
+    @last_name = params[:lname]
+    @username = params[:username]
+    @email = params[:email]
+    @active_status = params[:active_status]
+   
+   
+      User.update(@user_id,@username, @first_name, @last_name, @email, @active_status)
+      redirect '/admin_users'
 end
 
 post '/admin_resolve_feedback' do

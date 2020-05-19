@@ -20,6 +20,7 @@
         <td><%= @bookmark_list.find_index(bookmark) + 1 %></td>
         <td><%= bookmark[1] %></td>
         <td><a class="btn btn-info btn-sm" href="<%= bookmark[2] %>" target="_blank"><%= Bookmark.getHost(bookmark[2]) %></a></td>
+
         <td>
            <form class="rating" method="post" action="/submit_rating" style="justify-content: left;">
   
@@ -68,6 +69,7 @@
                  </div>
                (<%= bookmark[8] %>)  
          </form>
+
         </td>
         <td><%= bookmark[5] %></td>
          
