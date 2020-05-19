@@ -113,17 +113,15 @@ CREATE TABLE IF NOT EXISTS "feedback" (
 	"feedback_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	"user_id"	TEXT NOT NULL,
 	"date_time"	TEXT NOT NULL,
-    "feedback_topic" TEXT NOT NULL,
+   "feedback_topic" TEXT NOT NULL,
 	"feedback"	TEXT NOT NULL,
 	"resolved"	INTEGER NOT NULL DEFAULT 0,
-    "bookmark_id",
+	"bookmark_id" DEFAULT NULL,
 	FOREIGN KEY("user_id") REFERENCES "users"("user_id")
   );
 SQL
 
-csvFeedback.each do |row|
-    DB.execute "insert into feedback values (?, ?, ?, ?, ?, ?, ?)", row.fields
-end
+
 
 csvTaggedBookmarks.each do |row|
     DB.execute "insert into tagged_bookmarks values ( ?, ?)", row.fields
@@ -146,7 +144,9 @@ csvTags.each do |row|
     DB.execute "insert into tags values ( ?, ?)", row.fields
 end
 
-
+csvFeedback.each do |row|
+    DB.execute "insert into feedback values (?, ?, ?, ?, ?, ?, ?)", row.fields
+end
 
 csvLoginHistory.each do |row|
     DB.execute "insert into login_history values ( ?, ?)", row.fields
