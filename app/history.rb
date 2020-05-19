@@ -27,3 +27,9 @@ post '/history' do
     @bookmark_list_history = Bookmark.find_by(@search, @tags)
     erb :history
 end
+
+post '/add_to_history' do
+    #History.new(0,0,0)
+    puts "added to history"
+    redirect'/'
+end
