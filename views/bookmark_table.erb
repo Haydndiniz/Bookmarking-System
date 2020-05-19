@@ -25,8 +25,10 @@
            <form class="rating" method="post" action="/submit_rating" style="justify-content: left;">
   
               <input type="hidden" name="bookmark_id" value="<%= bookmark[0] %>">
+              <input type="hidden" name="num_ratings" value="<%= bookmark[8] %>">
+              <input type="hidden" name="current_rating" value="<%= bookmark[7] %>">
                  <div class ="stars"> 
-                    <% case bookmark[7] when 0 %>
+                    <% case bookmark[7].to_i when 0 %>
                        <button id="rating" type="submit" name="stars" value="5">&#9733;</button>
                        <button id="rating" type="submit" name="stars" value="4">&#9733;</button>
                        <button id="rating" type="submit" name="stars" value="3">&#9733;</button>
@@ -65,10 +67,10 @@
                     <% else %>
                     <% end %>  
                  </div>
+               (<%= bookmark[8] %>)  
          </form>
 
         </td>
-        
         <td><%= bookmark[5] %></td>
          
         <td>
@@ -90,7 +92,6 @@
                data-content="<div><b>Boomark ID: <%= bookmark[0] %></b></div>
                              <div><b>Description: </b><%= bookmark[4] %> </div>
                              <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %> </div>
-                             
                              ">More Info</a>
              
          </td>

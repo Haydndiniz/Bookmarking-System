@@ -85,7 +85,21 @@ module Bookmark
         end
         return result
     end
-   
+    
+   def Bookmark.updateRating(bookmark_id, submitted_rating, num_ratings, current_rating)
+        query = "UPDATE bookmarks SET rating = ?, num_ratings = ? WHERE bookmark_id = ?;"
+        rating = ((current_rating*num_ratings)+submitted_rating)/(num_ratings +1)
+        num_ratings = num_ratings + 1
+        begin
+            $db.execute query, rating, num_ratings, bookmark_id
+            result = true
+            puts "New rating submitted"
+        rescue SQLite3::ConstraintException
+            puts "Insertion Failed"
+        end
+        return result
+    end
+    
    #method to get the truncated url without subpages
    def Bookmark.getHost(url)
       uri = URI(url)  

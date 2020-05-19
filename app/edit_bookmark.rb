@@ -33,7 +33,12 @@ post '/EditBookmark' do
 end
 
 post '/submit_rating' do
-   puts params[:bookmark_id]
-   puts params[:stars]
-   redirect '/'
+    @id = params[:bookmark_id].to_i
+    @rating = params[:stars].to_i
+    @numRatings = params[:num_ratings].to_i
+    @currentRating = params[:current_rating].to_f
+    Bookmark.updateRating(@id, @rating, @numRatings, @currentRating)
+    puts ((@currentRating*@numRatings)+@rating)/(@numRatings +1)
+    puts ("added rating " + @rating.to_s + "to bookmark with id: " + @id.to_s)
+    redirect '/'
 end
