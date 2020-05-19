@@ -1,5 +1,5 @@
 before do
-   @bookmark_list = $db.execute "SELECT * FROM bookmarks ORDER BY bookmark_name ASC"
+   @bookmark_list_history = $db.execute "SELECT * FROM bookmark_history ORDER BY date ASC"
    $users_signed_in = 0 
    @tags_list = $db.execute "SELECT * FROM tags ORDER BY name ASC"
 end
@@ -24,6 +24,6 @@ post '/history' do
         @tags = params[:tags]
     end
     
-    @bookmark_list = Bookmark.find_by(@search, @tags)
+    @bookmark_list_history = Bookmark.find_by(@search, @tags)
     erb :history
 end
