@@ -54,5 +54,5 @@ post '/add_to_history' do
     end
     
     puts "#{@user_id} #{@visited_bookmark_id} #{@visit_time} added to history"
-    redirect'/'
+    redirect params[:bookmark_url]
 end

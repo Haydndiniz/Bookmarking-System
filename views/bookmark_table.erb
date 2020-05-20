@@ -23,7 +23,8 @@
         <td><form class="history" method="post" action="/add_to_history">
             <input type="hidden" name="bookmark_id" value="<%= bookmark[0] %>"/>
             <a class="btn btn-info btn-sm" href="<%= bookmark[2] %>" onclick="parentNode.submit();" target="_blank"><%= Bookmark.getHost(bookmark[2]) %></a>
-            </form>
+           <input type="hidden" name="bookmark_url" value="<%= bookmark[2] %>">
+           </form>
         </td> <!-- link is used to POST details about visited bookmark -->
           
         <td>
