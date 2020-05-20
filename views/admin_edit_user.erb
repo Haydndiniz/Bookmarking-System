@@ -32,14 +32,15 @@
     <% end %>
         <!--BODY-->
  
-        <div class="bookmark-dark" style="height: 780px;">
+        <div class="signup-dark" style="height: 780px;">
             <form  action="/admin_update_user" method="post" style="margin: 0px;height: 500px;width: 500px;margin-top: -70px;">
                 <h2 class="sr-only">Edit User Form</h2>
+                                <input type="hidden" id="disabledTextInput" class="form-control" value="<%= @admin_editing_user[0] %>" name="user_id" aria-describedby="basic-addon1">
                <div class="input-group mb-3">
                  <div class="input-group-prepend">
                    <span class="input-group-text" id="basic-addon1">User ID</span>
                  </div>
-                 <input type="text" id="disabledTextInput" class="form-control" value="<%= @admin_editing_user[0] %>" name="user_id" aria-describedby="basic-addon1">
+                 <input type="text" id="disabledTextInput" class="form-control" value="<%= @admin_editing_user[0] %>" aria-describedby="basic-addon1" disabled>
                </div>
                <div class="input-group mb-3">
                  <div class="input-group-prepend">

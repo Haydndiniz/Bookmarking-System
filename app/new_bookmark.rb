@@ -13,9 +13,9 @@ post '/new_Bookmark' do
     #date-time format (YYYY/MM/DD HH:MM)
     @last_updated = Time.now.strftime("%Y/%m/%d %H:%M").to_s
     
-    @bookmark_name = params[:bookmark_name]
-    @link = params[:link]
-    @description = params[:description]
+    @bookmark_name = params[:bookmark_name].strip
+    @link = params[:link].strip
+    @description = params[:description].strip
     @report_status=2
     
     Bookmark.new(@bookmark_name, @link, @description, session[:user_id], @last_updated)

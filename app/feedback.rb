@@ -14,8 +14,8 @@ post '/sendFeedback' do
     #get the date and time
     @date_time = Time.now.strftime("%Y/%m/%d %H:%M").to_s
     
-    @feeback_topic = params[:feedback_topic]
-    @feedback = params[:feedback]
+    @feeback_topic = params[:feedback_topic].strip
+    @feedback = params[:feedback].strip
     if session[:logged_in]
         @current_user = session[:user_id]
     else

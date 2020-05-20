@@ -21,8 +21,8 @@ post '/login' do
     @login = true
  
     
-    @email = params[:email]
-    @pass = params[:password]
+    @email = params[:email].strip
+    @pass = params[:password].strip
     @userFound = User.find_user(@email, @pass) 
     
     @email_ok = !@email.nil? && @email != "" && @email =~ VALID_EMAIL_REGEX

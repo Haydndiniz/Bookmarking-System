@@ -74,11 +74,11 @@ end
 
 post '/admin_update_user' do
     @user_id = params[:user_id]
-    @first_name = params[:fname]
-    @last_name = params[:lname]
-    @username = params[:username]
-    @email = params[:email]
-    @active_status = params[:active_status]
+    @first_name = params[:fname].strip
+    @last_name = params[:lname].strip
+    @username = params[:username].strip
+    @email = params[:email].strip
+    @active_status = params[:active_status].strip
    
    
       User.update(@user_id,@username, @first_name, @last_name, @email, @active_status)

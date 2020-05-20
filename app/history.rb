@@ -20,7 +20,7 @@ end
 ##--------------------Get Methods--------------------#
 
 get '/history' do
-    @search = params[:search]
+    @search = params[:search].strip
     erb :history 
 end
 
@@ -28,13 +28,13 @@ end
 
 #search
 post '/history' do
-    @search = params[:search]
+    @search = params[:search].strip
     
     #checks if tags have been input
     if params[:tags].nil?
         @tags = 0
     else
-        @tags = params[:tags]
+        @tags = params[:tags].strip
     end
     
     @bookmark_list_history = Bookmark.find_by(@search, @tags)
