@@ -31,7 +31,7 @@ module Bookmark
             tagsString = tagsString.chop
             
             #puts tags
-            puts tagsString
+            #puts tagsString
             
             #build the query
             query = "SELECT DISTINCT bookmarks.bookmark_id, bookmark_name, link, description, creator, last_updated, report_status, rating, num_ratings 
