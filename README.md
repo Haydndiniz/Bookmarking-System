@@ -1,5 +1,4 @@
 
-
 # ACME CORP: Ruby x Sinatra Project
 
 ## System setup before running
@@ -45,3 +44,15 @@ This will start the web server which is accessible at
 Where ‘your_codio_name’ is the name of your specific codio domain.
 
 ***Note: you must include the “-4567” to access the program otherwise you might access the project directory instead.***
+
+### 4 login details
+
+
+|  Username | Password | Description                                         |
+|-----------|----------|-----------------------------------------------------|
+| admin     | admin    | Admin user has extended rights                      |
+| user      | user     | A average user with normal permissions              |
+| role1     | role1    | A average user with normal permissions              |
+| role2     | role2    | An account that has been suspended                  |
+| role3     | role3    | A user account with favourites and bookmark history |
+| role4     | role4    | A user awaiting account approval from admin         |
