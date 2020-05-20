@@ -1,6 +1,7 @@
 before do
    @ids_in_history = Array.new
    @bookmark_list_array = Array.new
+   @last_visit = Array.new
     
    query = "SELECT bookmark_id FROM bookmark_history WHERE user_id = ?"
    @ids_in_history = $db.execute query, session[:user_id]
@@ -11,7 +12,7 @@ before do
    end
    
    @bookmark_list_history = @bookmark_list_array
-  
+   #puts "#{@bookmark_list_history}"
    $users_signed_in = 0 
    @tags_list = $db.execute "SELECT * FROM tags ORDER BY name ASC"
 end
@@ -44,11 +45,13 @@ post '/add_to_history' do
     @user_id = session[:user_id]
     @visited_bookmark_id = params[:bookmark_id].to_i
     @visit_time = Time.now.strftime("%Y/%m/%d %H:%M").to_s
-    Bookmark.updateLastVisited(@visited_bookmark_id, @visit_time)
+    #Bookmark.updateLastVisited(@visited_bookmark_id, @visit_time)
     
-    
-        
-    History.new(@user_id, @visited_bookmark_id, @visit_time)
+    #if !@bookmark_list_array.include? (Bookmark.find_by_id(@visited_bookmark_id))  
+        History.new(@user_id, @visited_bookmark_id, @visit_time)
+    #else
+        #History.update_date(@visited_bookmark_id, @visit_time)
+    #end
    
     
     puts "#{@user_id} #{@visited_bookmark_id} #{@visit_time} added to history"

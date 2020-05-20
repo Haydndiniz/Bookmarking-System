@@ -1,7 +1,6 @@
 <table class="table">
   <thead>
     <tr>
-        <th>No.</th>
         <th>Bookmark Name</th>
         <th>Link</th>
         
@@ -9,7 +8,7 @@
         <th>Last Updated</th>
         <th>Status</th>
         <th>More Info</th>
-        <th>Last visited</th>
+        <th>Visited on</th>
     </tr>
   </thead>
 
@@ -18,7 +17,6 @@
         <% @bookmark_list_history.each do |bookmark| %>
       <tr>
 
-        <td><%= @bookmark_list_history.find_index(bookmark) + 1 %></td>
         <td><%= bookmark[1] %></td>
         <td><a class="btn btn-info btn-sm" href="<%= bookmark[2] %>" target="_blank"><%= Bookmark.getHost(bookmark[2]) %></a></td>
 
@@ -98,7 +96,7 @@
          </td>
           
          <td>
-             <%= bookmark[9] %>
+             <%= History.get_last_visit_date(bookmark[0]) %>
          </td>
       </tr>
     <% end %>
