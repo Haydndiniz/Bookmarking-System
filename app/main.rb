@@ -31,7 +31,7 @@ end
 
 #search
 post '/index' do
-    @search = params[:search]
+    @search = params[:search].strip
     
     #checks if tags have been input
     if params[:tags].nil?
