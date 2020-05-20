@@ -96,7 +96,8 @@
              <a tabindex="0" class="btn btn-sm btn-info" role="button"  data-html="true" data-toggle="popover" data-trigger="focus" title="<%= bookmark[1] %>"
                data-content="<div><b>Boomark ID: <%= bookmark[0] %></b></div>
                              <div><b>Description: </b><%= bookmark[4] %> </div>
-                             <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %> </div>
+                             <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %></div>
+                             <div><b>Department tags: </b><%= Bookmark.getTags(bookmark[0]) %></div>
                              ">More Info</a>
              
          </td>

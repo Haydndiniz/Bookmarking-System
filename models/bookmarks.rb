@@ -105,4 +105,22 @@ module Bookmark
       uri = URI(url)  
       return uri.host      
    end
+   
+   #returns the tags for a specific bookmark_id
+   def Bookmark.getTags(id)
+      query = "SELECT tag_id FROM tagged_bookmarks WHERE bookmark_id = ?"
+      result = $db.execute query, id
+      if (result.count != 0)
+         tag_list = Array.new
+         for i in 0..(result.count-1)
+            query = "SELECT name FROM tags WHERE tag_id = ?"
+            list = ($db.execute query, result[i]) 
+            tag_list[i] = list[0]
+         end 
+         output = tag_list.join(", ")
+      else 
+         output = "No Tags"
+      end
+      return output
+   end
 end

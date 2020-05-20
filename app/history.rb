@@ -20,7 +20,7 @@ end
 ##--------------------Get Methods--------------------#
 
 get '/history' do
-    @search = params[:search].strip
+    @search = params[:search]
     erb :history 
 end
 

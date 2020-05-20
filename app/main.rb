@@ -1,5 +1,5 @@
 before do
-   @bookmark_list = $db.execute "SELECT * FROM bookmarks ORDER BY bookmark_name ASC"
+   @bookmark_list = $db.execute "SELECT * FROM bookmarks ORDER BY report_status DESC"
    $users_signed_in = 0 
    @tags_list = $db.execute "SELECT * FROM tags ORDER BY name ASC"
 end
