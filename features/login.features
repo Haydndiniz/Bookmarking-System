@@ -1,0 +1,6 @@
+Given I am on the login page
+When I fill in login_email with "user" within login_email
+When I fill in login_password with "user" within login_password
+When I press "Log in" within login_form
+Then I should see "Successfully signed in as"
+

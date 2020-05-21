@@ -1,0 +1,16 @@
+Given I am on the index page
+When I press "More Info" within bookmark_table
+Then I should see "Bookmark ID:" within more_info
+
+Given I am on the index page
+When I press "More Info" within bookmark_table
+Then I should see "Description:" within more_info
+
+Given I am on the index page
+When I press More Info within bookmark_table
+Then I should see "Creator:" within more_info
+
+Given I am on the index page
+When I press More Info within bookmark_table
+Then I should see "Department tags:" within more_info
+

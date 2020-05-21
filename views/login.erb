@@ -21,7 +21,7 @@
     <% end %>
 
     <div class="login-dark">
-        <form method="post">
+        <form id="login_form" method="post">
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             <% if @login && !@email_ok && @pass_ok %>
@@ -32,9 +32,9 @@
             <p>Please enter your email and password</p>
             <% end %>
             <div class="form-group">
-               <input class="form-control" type="email" name="email" placeholder="Email" value="<%=h @email if @login %>"></div>
+               <input id="login_email" class="form-control" type="email" name="email" placeholder="Email" value="<%=h @email if @login %>"></div>
             <div class="form-group">
-               <input class="form-control" type="password" name="password" placeholder="Password"></div>
+               <input id="login_password" class="form-control" type="password" name="password" placeholder="Password"></div>
             <div class="form-group"><input class="btn btn-primary btn-block" type="submit" value="Log In"></div>
             <div class="forgot">
 					Don't have an account?<a href="/signup"> Sign Up</a>

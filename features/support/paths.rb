@@ -14,6 +14,9 @@ module NavigationHelpers
     when /the main page/
         '/'
         
+    when /the index page/
+        '/'
+        
     when /the login page/
         '/login'
     

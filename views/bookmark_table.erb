@@ -11,7 +11,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id="bookmark_table">
  
         <% @bookmark_list.each do |bookmark| %>
       <tr>
@@ -92,7 +92,7 @@
            <% end %>
          </td>
          
-         <td>
+         <td id="more_info">
              <a tabindex="0" class="btn btn-sm btn-info" role="button"  data-html="true" data-toggle="popover" data-trigger="focus" title="<%= bookmark[1] %>"
                data-content="<div><b>Boomark ID: <%= bookmark[0] %></b></div>
                              <div><b>Description: </b><%= bookmark[4] %> </div>
