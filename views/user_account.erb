@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>My Account - ACME</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/home_footer.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+        <link rel="stylesheet" href="css/signup.css">
+    </head>
+    
+    <body>
+<!--navigation bar-->
+    <% if session[:logged_in] && session[:admin] %>
+        <header class="sticky"><%= erb :admin_header %></header>
+    <% elsif session[:logged_in] && !session[:admin] %>
+        <header class="sticky"><%= erb :user_header %></header>
+    <% else %>
+        <header class="sticky"><%= erb :home_header %></header>
+    <% end %>
+
+    <% flash.keys.each do |type| %>
+
+      <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+        <strong><%= flash[type] %></strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+        <!--BODY-->
+ 
+        <div class="signup-dark" style="height: 780px;">
+            <form  action="/my_account_update" method="post" style="margin: 0px;height: 500px;width: 500px;margin-top: -70px;">
+                <h2 class="sr-only">Edit User Form</h2>
+                                <input type="hidden" id="disabledTextInput" class="form-control" value="<%= @editing_user[0] %>" name="user_id" aria-describedby="basic-addon1">
+               <div class="input-group mb-3">
+                 <div class="input-group-prepend">
+                   <span class="input-group-text" id="basic-addon1">User ID</span>
+                 </div>
+                 <input type="text" id="disabledTextInput" class="form-control" value="<%= @editing_user[0] %>" aria-describedby="basic-addon1" disabled>
+               </div>
+               <div class="input-group mb-3">
+                 <div class="input-group-prepend">
+                   <span class="input-group-text" id="basic-addon1">First Name</span>
+                 </div>
+                 <input type="text" class="form-control" value="<%= @editing_user[2] %>" name="fname"aria-label="Username" aria-describedby="basic-addon1">
+               </div>
+               <div class="input-group mb-3">
+                 <div class="input-group-prepend">
+                   <span class="input-group-text" id="basic-addon1">Last Name</span>
+                 </div>
+                 <input type="text" class="form-control" value="<%= @editing_user[3] %>" name="lname"aria-label="Username" aria-describedby="basic-addon1">
+               </div>
+               <div class="input-group mb-3">
+                 <div class="input-group-prepend">
+                   <span class="input-group-text" id="basic-addon1">Username</span>
+                 </div>
+                 <input type="text" class="form-control" value="<%= @editing_user[1] %>" name="username"aria-label="Username" aria-describedby="basic-addon1">
+               </div>
+               <div class="input-group mb-3">
+                 <div class="input-group-prepend">
+                   <span class="input-group-text" id="basic-addon1">Email</span>
+                 </div>
+                 <input type="text" class="form-control" value="<%= @editing_user[5] %>" name="email"aria-label="Username" aria-describedby="basic-addon1">
+               </div>
+               
+               
+               
+            <button type="submit" class="btn btn-primary">Submit</button>            
+           </form>
+        </div>
+
+<!------------------------footer---------------->
+        
+        <%= erb :home_footer %>
+       
+ 
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="js/script.min.js"></script>
+    </body>
+</html>

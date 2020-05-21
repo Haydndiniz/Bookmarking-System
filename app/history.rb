@@ -20,6 +20,8 @@ end
 ##--------------------Get Methods--------------------#
 
 get '/history' do
+   flash[:info]="Please login to access this page"
+   redirect '/login' if !session[:logged_in]
     @search = params[:search]
     erb :history 
 end

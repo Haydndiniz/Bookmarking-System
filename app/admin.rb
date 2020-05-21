@@ -41,6 +41,7 @@ get '/admin_feedback' do
    end
 end
 
+#get method to edit specific user
 get '/admin_edit_user/:id' do
     if !session[:admin]  
       flash[:warning] = "You wandered into protected space, please login to continue"

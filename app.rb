@@ -13,12 +13,14 @@ require_relative 'app/edit_bookmark.rb'
 require_relative 'app/admin.rb'
 require_relative 'app/signup.rb'
 require_relative 'app/history.rb'
+require_relative 'app/favourites.rb'
 
 
 require_relative 'models/user.rb'
 require_relative 'models/bookmarks.rb'
 require_relative 'models/feedback.rb'
 require_relative 'models/history'
+require_relative 'models/favourite_model'
 
 puts "#{Socket.gethostname}"
 

@@ -1,9 +1,55 @@
-<table class="table">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>History - ACME</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/home_footer.css">
+    <link rel="stylesheet" href="css/searchbar.css">
+    <link rel="stylesheet" href="css/rating_system.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+
+    body {
+    padding-top: 110px;
+    padding-left: 50px;
+    padding-right:50px
+    }
+ 
+    </style>
+</head>
+
+
+<body id="bg">
+    <!--navigation bar-->
+    <% if session[:logged_in] && session[:admin] %>
+        <header class="sticky"><%= erb :admin_header %></header>
+    <% elsif session[:logged_in] && !session[:admin] %>
+        <header class="sticky"><%= erb :user_header %></header>
+    <% else %>
+        <header class="sticky"><%= erb :home_header %></header>
+    <% end %>
+
+    <% flash.keys.each do |type| %>
+
+      <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+        <strong><%= flash[type] %></strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+     </button>
+</div>
+    <% end %>
+    <!--main content-->
+    <table class="table">
   <thead>
     <tr>
-        <th>No.</th>
         <th>Bookmark Name</th>
         <th>Link</th>
+        
         <th>Rating</th>
         <th>Last Updated</th>
         <th>Status</th>
@@ -13,19 +59,12 @@
 
   <tbody>
  
-        <% @bookmark_list.each do |bookmark| %>
+        <% @favourite_list.each do |bookmark| %>
       <tr>
 
-        <td><%= @bookmark_list.find_index(bookmark) + 1 %></td>
         <td><%= bookmark[1] %></td>
-          
-        <td><form class="history" method="post" action="/add_to_history">
-            <input type="hidden" name="bookmark_id" value="<%= bookmark[0] %>"/>
-            <a class="btn btn-info btn-sm" href="<%= bookmark[2] %>" onclick="parentNode.submit();" target="_blank"><%= Bookmark.getHost(bookmark[2]) %></a>
-           <input type="hidden" name="bookmark_url" value="<%= bookmark[2] %>">
-           </form>
-        </td> <!-- link is used to POST details about visited bookmark -->
-          
+        <td><a class="btn btn-info btn-sm" href="<%= bookmark[2] %>" target="_blank"><%= Bookmark.getHost(bookmark[2]) %></a></td>
+
         <td>
            <form class="rating" method="post" action="/submit_rating" style="justify-content: left;">
   
@@ -96,12 +135,27 @@
              <a tabindex="0" class="btn btn-sm btn-info" role="button"  data-html="true" data-toggle="popover" data-trigger="focus" title="<%= bookmark[1] %>"
                data-content="<div><b>Boomark ID: <%= bookmark[0] %></b></div>
                              <div><b>Description: </b><%= bookmark[4] %> </div>
-                             <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %></div>
-                             <div><b>Department tags: </b><%= Bookmark.getTags(bookmark[0]) %></div>
-                             ">More Info</a>
-             
+                             <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %> </div>
+                             ">More Info</a>          
          </td>
+         
       </tr>
     <% end %>
     </tbody>
 </table>
+    
+    <!--footer-->
+      <script>
+   $(document).ready(function(){
+     $('[data-toggle="popover"]').popover(); 
+   });
+   </script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="js/script.min.js"></script>
+
+
+</body>
+
+</html>

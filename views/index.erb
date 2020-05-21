@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/home_footer.css">
     <link rel="stylesheet" href="css/searchbar.css">
     <link rel="stylesheet" href="css/rating_system.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
@@ -45,11 +45,11 @@
      </button>
 </div>
     <% end %>
-    <!--main content-->
-    <div id="searchform">
+<!-- main content -->
+   <div id="searchform">
         <%= erb :searchbar %>
     </div>
-    <%= $user_signed_in %>
+   
     <div id="table">
         <%= erb :bookmark_table %>
     </div>

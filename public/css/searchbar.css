@@ -51,7 +51,7 @@ div #filter-option{
     margin: 1%;
     overflow: auto;
 
-    padding: 12px;
+    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -81,15 +81,8 @@ input[type=search], select, textarea{
   box-sizing: border-box;
 }
 
-button[type=submit]{
-    width: 15%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
 
 input[type=checkbox] {
     transform: scale(1.5);
-    margin-right: 6%;
+    margin-right: 2%;
 }

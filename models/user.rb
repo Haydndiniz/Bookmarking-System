@@ -91,6 +91,19 @@ module User
      end
    end
    
+   #method for user to update their own account
+   def User.user_update(user_id, username, first_name, last_name, email)
+       query = "UPDATE users SET username = ?, first_name = ?, last_name = ?, email = ?
+                WHERE user_id = ?;"
+     begin
+         $db.execute query, username, first_name, last_name, email, user_id
+        
+         puts "user updated"
+     rescue SQLite3::ConstraintException
+         puts "failed to update user"
+     end
+   end
+   
 #    admin method to find a user. returns an array of user info
    def User.admin_find_user(id)
        query = "SELECT * FROM users WHERE user_id = ?;"
