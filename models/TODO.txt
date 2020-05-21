@@ -1,3 +1,0 @@
-Complete user model
-create bookmark model
-create feedback model

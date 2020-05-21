@@ -22,10 +22,10 @@ end
 get '/history' do
   if !session[:logged_in]  
       flash[:warning] = "Please login to continue"
-       redirect '/login'
+      redirect '/login'
   end
-    @search = params[:search]
-    erb :history 
+      @search = params[:search]
+      erb :history 
 end
 
 

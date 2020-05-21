@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
 </head>
 
 <body id="page-top">
     <div id="wrapper">
        <%if session[:logged_in]  %>
-        <header class="sticky"><%= erb :admin_header %></header>
+           <header class="sticky"><%= erb :admin_header %></header>
        <% end %>
        
 
@@ -25,8 +25,7 @@
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="/admin" style="font-size: 20px;"><i class="fas fa-tachometer-alt" style="font-size: 20px;"></i><span style="font-size: 16px;">Dashboard</span></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="/admin_users" style="font-size: 16px;"><i class="fa fa-user" style="font-size: 20px;"></i>User Management</a>
                        <a class="nav-link active" href="/admin_bookmarks" style="font-size: 16px;"><i class="fa fa-bookmark" style="font-size: 16px;"></i>Bookmark Management</a>
-                        <a
-                            class="nav-link active" href="/admin_feedback" style="font-size: 16px;"><i class="fa fa-comment" style="font-size: 20px;"></i>Feedback</a>
+                       <a class="nav-link active" href="/admin_feedback" style="font-size: 16px;"><i class="fa fa-comment" style="font-size: 20px;"></i>Feedback</a>
                     </li>
                     <li class="nav-item" role="presentation"></li>
                 </ul>
@@ -41,13 +40,12 @@
                 </nav>
 <!--                flash notices -->
                 <% flash.keys.each do |type| %>
-
-                  <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
-                    <strong><%= flash[type] %></strong> 
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                   <span aria-hidden="true">&times;</span>
-                 </button>
-                  </div>
+                    <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+                      <strong><%= flash[type] %></strong> 
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
                 <% end %>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4"></div>
@@ -57,10 +55,16 @@
                                 <div class="card-body">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col mr-2">
-                                            <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Total Users</span></div>
-                                            <div class="text-dark font-weight-bold h5 mb-0"><span><%= User.getNumber(1) + User.getNumber(0) %></span></div>
+                                            <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
+                                                <span>Total Users</span>
+                                            </div>
+                                            <div class="text-dark font-weight-bold h5 mb-0">
+                                                <span><%= User.getNumber(1) + User.getNumber(0) %></span>
+                                            </div>
                                         </div>
-                                        <div class="col-auto"><i class="fas fa-user-friends fa-2x text-gray-300"></i></div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user-friends fa-2x text-gray-300"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -70,10 +74,16 @@
                                 <div class="card-body">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col mr-2">
-                                            <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Active Users</span></div>
-                                            <div class="text-dark font-weight-bold h5 mb-0"><span><%= User.getNumber(1) %></span></div>
+                                            <div class="text-uppercase text-success font-weight-bold text-xs mb-1">
+                                                <span>Active Users</span>
+                                            </div>
+                                            <div class="text-dark font-weight-bold h5 mb-0">
+                                                <span><%= User.getNumber(1) %></span>
+                                            </div>
                                         </div>
-                                        <div class="col-auto"><i class="fas fa-user-check fa-2x text-gray-300"></i></div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user-check fa-2x text-gray-300"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -83,17 +93,23 @@
                                 <div class="card-body">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col mr-2">
-                                            <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Suspended Users</span></div>
+                                            <div class="text-uppercase text-warning font-weight-bold text-xs mb-1">
+                                                <span>Suspended Users</span>
+                                            </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span><%= User.getNumber(0) %></span></div>
+                                                    <div class="text-dark font-weight-bold h5 mb-0 mr-3">
+                                                        <span><%= User.getNumber(0) %></span>
+                                                    </div>
                                                 </div>
                                                 <div class="col">
                                                    
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-auto"><i class="fas fa-bookmark fa-2x text-gray-300"></i></div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-bookmark fa-2x text-gray-300"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -103,10 +119,16 @@
                                 <div class="card-body">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col mr-2">
-                                            <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>New User Requests</span></div>
-                                            <div class="text-dark font-weight-bold h5 mb-0"><span><%= User.getNew() %></span></div>
+                                            <div class="text-uppercase text-info font-weight-bold text-xs mb-1">
+                                                <span>New User Requests</span>
+                                            </div>
+                                            <div class="text-dark font-weight-bold h5 mb-0">
+                                                <span><%= User.getNew() %></span>
+                                            </div>
                                         </div>
-                                        <div class="col-auto"><i class="fas fa-user-plus fa-2x text-gray-300"></i></div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user-plus fa-2x text-gray-300"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -118,54 +140,57 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <h6 class="text-primary font-weight-bold m-0">New User Requests</h6>
-                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                    <div class="dropdown no-arrow">
+                                        <button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">
+                                            <i class="fas fa-ellipsis-v text-gray-400"></i>
+                                        </button>
                                         <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
                                             role="menu">
-                                            <p class="text-center dropdown-header">Actions:</p><a class="dropdown-item" role="presentation" href="/signup">&nbsp;Add User</a>
+                                            <p class="text-center dropdown-header">Actions:</p>
+                                            <a class="dropdown-item" role="presentation" href="/signup">&nbsp;Add User</a>
                                         </div>
                                     </div>
                                 </div>
                                 <table class="table">
                                    <thead>
-                                     <tr>
-                                         <th>User ID</th>
-                                         <th>User Name</th>
-                                        <th>First Name</th>
-                                         <th>Last Name</th>
-                                         <th>Email</th>
-<!--                                          <th>Last Logged in</th> -->
-                                         <th>Status</th>
-                                         <th>Edit user</th>
-                                     </tr>
+                                       <tr>
+                                           <th>User ID</th>
+                                           <th>User Name</th>
+                                           <th>First Name</th>
+                                           <th>Last Name</th>
+                                           <th>Email</th>
+                                           <th>Status</th>
+                                           <th>Edit user</th>
+                                       </tr>
                                    </thead>
 
                                    <tbody>
 
-                                         <% @new_user_list.each do |new_user| %>
+                                       <% @new_user_list.each do |new_user| %>
                                        <tr>
-
-                                         <td><%= new_user[0] %></td>
-                                         <td><%= new_user[1] %></td>
-                                         <td><%= new_user[2] %></td>
-                                         <td><%= new_user[3] %></td>
-                                         <td><%= new_user[5] %></td>
-                                         <td>
-                                            <% case new_user[6] when 0 %>
-                                                <img src='images/red.png' class="icon" alt="suspended" />
-                                            <% when 1 %>
-                                                <img src='images/green.png' class="icon" alt="active"/>
-                                            <% else %>
-                                            <% end %>
-                                          </td> 
-                                         <td><form method="post" action="/admin_add_user">                                            
-                                             <input type="hidden" name="userid" value= "<%= new_user[0] %>" >                                              
-                                               <input class="btn btn-info btn-sm" type="submit" value="Approve">
-                                            </form></td>
-
+                                           <td><%= new_user[0] %></td>
+                                           <td><%= new_user[1] %></td>
+                                           <td><%= new_user[2] %></td>
+                                           <td><%= new_user[3] %></td>
+                                           <td><%= new_user[5] %></td>
+                                           <td>
+                                               <% case new_user[6] when 0 %>
+                                                   <img src='images/red.png' class="icon" alt="suspended" />
+                                               <% when 1 %>
+                                                   <img src='images/green.png' class="icon" alt="active"/>
+                                               <% else %>
+                                               <% end %>
+                                           </td> 
+                                           <td>
+                                               <form method="post" action="/admin_add_user">
+                                                   <input type="hidden" name="userid" value= "<%= new_user[0] %>" >                                              
+                                                   <input class="btn btn-info btn-sm" type="submit" value="Approve">
+                                               </form>
+                                           </td>
                                        </tr>
-                                     <% end %>
-                                     </tbody>
-                                 </table>
+                                       <% end %>
+                                   </tbody>
+                                </table>
                         </div>
                     </div>
                     
@@ -189,10 +214,9 @@
                                      <tr>
                                          <th>User ID</th>
                                          <th>User Name</th>
-                                        <th>First Name</th>
+                                         <th>First Name</th>
                                          <th>Last Name</th>
                                          <th>Email</th>
-<!--                                          <th>Last Logged in</th> -->
                                          <th>Status</th>
                                          <th>Edit user</th>
                                      </tr>
@@ -201,32 +225,31 @@
                                    <tbody>
 
                                          <% @user_list.each do |user| %>
-                                       <tr>
+                                         <tr>
 
-                                         <td><%= user[0] %></td>
-                                         <td><%= user[1] %></td>
-                                         <td><%= user[2] %></td>
-                                         <td><%= user[3] %></td>
-                                         <td><%= user[5] %></td>
-                                         <td>
-                                            <% case user[6] when 0 %>
-                                                <img src='images/red.png' class="icon" alt="suspended" />
-                                            <% when 1 %>
-                                                <img src='images/green.png' class="icon" alt="active"/>
-                                            <% else %>
-                                            <% end %>
-                                          </td> 
-                                         <td><a class="btn btn-info btn-sm" href="/admin_edit_user/<%= user[0] %>">Edit User</a></td>
+                                             <td><%= user[0] %></td>
+                                             <td><%= user[1] %></td>
+                                             <td><%= user[2] %></td>
+                                             <td><%= user[3] %></td>
+                                             <td><%= user[5] %></td>
+                                             <td>
+                                                <% case user[6] when 0 %>
+                                                    <img src='images/red.png' class="icon" alt="suspended" />
+                                                <% when 1 %>
+                                                    <img src='images/green.png' class="icon" alt="active"/>
+                                                <% else %>
+                                                <% end %>
+                                              </td> 
+                                             <td><a class="btn btn-info btn-sm" href="/admin_edit_user/<%= user[0] %>">Edit User</a></td>
 
-                                       </tr>
-                                     <% end %>
+                                         </tr>
+                                         <% end %>
                                      </tbody>
                                  </table>
+                            </div>
                         </div>
                     </div>
-                    
-        </div>
-    </div>
+                </div>
            </div>
        </div>
    </div>

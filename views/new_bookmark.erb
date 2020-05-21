@@ -12,7 +12,7 @@
     </head>
     
     <body>
-<!--navigation bar-->
+    <!--navigation bar-->
     <% if session[:logged_in] && session[:admin] %>
         <header class="sticky"><%= erb :admin_header %></header>
     <% elsif session[:logged_in] && !session[:admin] %>
@@ -23,12 +23,12 @@
 
     <% flash.keys.each do |type| %>
 
-      <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+    <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
         <strong><%= flash[type] %></strong> 
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-       <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true">&times;</span>
         </button>
-      </div>
+    </div>
     <% end %>
         <!--BODY-->
  
@@ -39,7 +39,8 @@
                 <div class="form-group"><input class="form-control" type="text" name="link" placeholder="Enter the bookmark URL" required="" inputmode="url"></div>
                 <div class="form-group"><textarea class="form-control" rows="4" placeholder="Enter a bookmark description..." name="description" required="" maxlength="100"></textarea></div>
                 <div class="form-group"><button class="btn btn-secondary btn-block" type="reset" style="width: 176px;">Reset Form</button>
-                    <button class="btn btn-primary btn-block" type="submit" style="width: 176px;margin: 235px;margin-top: -38px;margin-right: 130px;height: 38px;padding: 0px;">Submit</button></div>
+                    <button class="btn btn-primary btn-block" type="submit" style="width: 176px;margin: 235px;margin-top: -38px;margin-right: 130px;height: 38px;padding: 0px;">Submit</button>
+                </div>
             </form>
         </div>
 <!------------------------footer---------------->

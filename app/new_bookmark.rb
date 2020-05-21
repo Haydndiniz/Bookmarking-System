@@ -1,9 +1,9 @@
 get '/new_bookmark' do
    if !session[:logged_in]  
       flash[:warning] = "Please login to create a bookmark"
-       redirect '/login'
+      redirect '/login'
    else
-    erb :new_bookmark
+      erb :new_bookmark
    end
 end
 
@@ -18,11 +18,6 @@ post '/new_Bookmark' do
     @description = params[:description].strip
     @report_status=2
     
-    Bookmark.new(@bookmark_name, @link, @description, session[:user_id], @last_updated)
-    
-#     add_bookmark = "INSERT INTO bookmarks (bookmark_name, link, description, creator, last_updated) VALUES (?,?,?,?,?)"
-    
-#     $db.execute add_bookmark, params[:bookmark_name], params[:link], params[:description], session[:user_id], @last_updated
-    
+    Bookmark.new(@bookmark_name, @link, @description, session[:user_id], @last_updated)  
     redirect '/'
 end

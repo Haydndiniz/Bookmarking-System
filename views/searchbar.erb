@@ -1,26 +1,26 @@
 <form method="post">
    
     <div id="sfbox">
-         <div class="row">
-        <div class="col">
-            <div class="input-group">
-                <div class="input-group-prepend"><span class="input-group-text">Search:</span></div><input name="search" class="form-control autocomplete" type="text" placeholder="Search for a bookmark...">
-                <div class="input-group-append"><button class="btn btn-warning" type="submit"><i class="fas fa-search"></i></button></div>
+        <div class="row">
+            <div class="col">
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text">Search:</span></div><input name="search" class="form-control autocomplete" type="text" placeholder="Search for a bookmark...">
+                    <div class="input-group-append"><button class="btn btn-warning" type="submit"><i class="fas fa-search"></i></button></div>
+                </div>
             </div>
-        </div>
        </div>
 
-        <div id="options">
-            
-            <% @tags_list.each do |tag| %>
-                
-            <div id="filter-option">
-                <input type="checkbox" name="<%= "tags[tag" + (@tags_list.find_index(tag) + 1).to_s + "]" %>" value="<%= tag[1] %>">
-                <label for="<%= "tag" + (@tags_list.find_index(tag) + 1).to_s %>"><%= tag[1] %></label><br>
-            </div>
-            
-            <% end %>
+       <div id="options">
+           
+           <% @tags_list.each do |tag| %>
+           
+           <div id="filter-option">
+               <input type="checkbox" name="<%= "tags[tag" + (@tags_list.find_index(tag) + 1).to_s + "]" %>" value="<%= tag[1] %>">
+               <label for="<%= "tag" + (@tags_list.find_index(tag) + 1).to_s %>"><%= tag[1] %></label><br>
+           </div>
+          
+           <% end %>
          
-        </div>
+       </div>
     </div>
 </form>

@@ -25,8 +25,8 @@ get '/admin_bookmarks' do
       flash[:warning] = "You wandered into protected space, please login to continue"
        redirect '/login'
    else
-   @admin_bookmark_list = $db.execute "SELECT * FROM bookmarks ORDER BY bookmark_id ASC"
-    erb :admin_bookmark_mgmt
+       @admin_bookmark_list = $db.execute "SELECT * FROM bookmarks ORDER BY bookmark_id ASC"
+       erb :admin_bookmark_mgmt
    end
 end
 
@@ -34,42 +34,42 @@ end
 get '/admin_feedback' do 
    if !session[:admin]  
       flash[:warning] = "You wandered into protected space, please login to continue"
-       redirect '/login'
+      redirect '/login'
    else
       @admin_feedback_list = $db.execute "SELECT * FROM feedback ORDER BY feedback_id ASC"   
-    erb :admin_feedback
+      erb :admin_feedback
    end
 end
 
 #get method to edit specific user
 get '/admin_edit_user/:id' do
     if !session[:admin]  
-      flash[:warning] = "You wandered into protected space, please login to continue"
+       flash[:warning] = "You wandered into protected space, please login to continue"
        redirect '/login'
     end   
     
     redirect '/index' if !session[:admin]
     
     session[:editing_id] = params["id"]
-   
+    
     redirect '/admin_edit_user'
 end
 
 get '/admin_edit_user' do
-   if !session[:admin]  
-      flash[:warning] = "You wandered into protected space, please login to continue"
-       redirect '/login'
-   else   
-      @admin_editing_user = User.admin_find_user(session[:editing_id])
-    erb :admin_edit_user
-   end
+    if !session[:admin] 
+        flash[:warning] = "You wandered into protected space, please login to continue"
+        redirect '/login'
+    else   
+        @admin_editing_user = User.admin_find_user(session[:editing_id])
+        erb :admin_edit_user
+    end
 end
 
 ##--------------------Post Methods--------------------#
 
 
 post '/admin_add_user' do
-     User.approve(params[:userid])
+    User.approve(params[:userid])
     redirect '/admin_users'
 end
 
@@ -82,11 +82,11 @@ post '/admin_update_user' do
     @active_status = params[:active_status].strip
    
    
-      User.update(@user_id,@username, @first_name, @last_name, @email, @active_status)
-      redirect '/admin_users'
+    User.update(@user_id,@username, @first_name, @last_name, @email, @active_status)
+    redirect '/admin_users'
 end
 
 post '/admin_resolve_feedback' do
-     Feedback.approve(params[:feedbackid])
+    Feedback.approve(params[:feedbackid])
     redirect '/admin_feedback'
 end

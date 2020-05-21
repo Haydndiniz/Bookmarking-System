@@ -3,8 +3,8 @@ VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 #get logout request and redirect to index page
 get '/logout' do                       
   	session.clear
-   $users_signed_in - 1
-   flash[:info] = "You have been successfully logged out"
+    $users_signed_in - 1
+    flash[:info] = "You have been successfully logged out"
   	redirect '/index'
 end
 

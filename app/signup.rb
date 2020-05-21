@@ -1,5 +1,5 @@
 get '/signup' do
-     Bookmark.getTags(2)
+    Bookmark.getTags(2)
     erb :signup
 end
 

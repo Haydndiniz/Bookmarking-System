@@ -19,16 +19,16 @@ get'/my_account' do
    
    if !session[:logged_in]  
       flash[:warning] = "Please login to continue"
-       redirect '/login'
+      redirect '/login'
    else   
       @editing_user = User.admin_find_user(session[:user_id])
-    erb :user_account
+      erb :user_account
    end
 end
 
 #not_found page
 not_found do
-    erb :not_found404
+   erb :not_found404
 end
 
 
