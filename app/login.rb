@@ -21,18 +21,18 @@ post '/login' do
     @login = true
  
     
-    @email = params[:email].strip
+    @username = params[:username].strip
     @pass = params[:password].strip
-    @userFound = User.find_user(@email, @pass) 
+    @userFound = User.find_user(@username, @pass) 
     
-    @email_ok = !@email.nil? && @email != "" && @email =~ VALID_EMAIL_REGEX
+    @username_ok = !@username.nil? && @username != ""
     @pass_ok = !@pass.nil? && @pass != ""
-    @all_ok = @email_ok && @pass_ok
+    @all_ok = @username_ok && @pass_ok
        
     if @userFound
     #Gather all user data
-    query = "SELECT * FROM users WHERE email = ?;"
-    @userInfo = $db.execute query, @email 
+    query = "SELECT * FROM users WHERE username = ?;"
+    @userInfo = $db.execute query, @username 
     @active = @userInfo[0][6]
     end
         

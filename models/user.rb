@@ -1,9 +1,9 @@
 module User
          
-    def User.find_user(email, pass)
+    def User.find_user(username, pass)
        result = false
-       query = "SELECT password FROM users WHERE email = ?;"
-       rows = $db.execute query, email
+       query = "SELECT password FROM users WHERE username = ?;"
+       rows = $db.execute query, username
        if (rows.count == 1)
            hash_check = BCrypt::Password.new(rows[0][0])
            result = hash_check.is_password?(pass)
