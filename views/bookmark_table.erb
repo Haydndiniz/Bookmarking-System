@@ -20,12 +20,13 @@
         <td><%= @bookmark_list.find_index(bookmark) + 1 %></td>
         <td><%= bookmark[1] %></td>
           
-        <td><form class="history" method="post" action="/add_to_history">
+         <td>
+            <form class="history" method="post" action="/add_to_history" target="_blank">
             <input type="hidden" name="bookmark_id" value="<%= bookmark[0] %>"/>
-            <a class="btn btn-info btn-sm" href="<%= bookmark[2] %>" onclick="parentNode.submit();" target="_blank"><%= Bookmark.getHost(bookmark[2]) %></a>
-           <input type="hidden" name="bookmark_url" value="<%= bookmark[2] %>">
-           </form>
-        </td> <!-- link is used to POST details about visited bookmark -->
+            <input class="btn btn-info btn-sm" type="submit" value="<%= Bookmark.getHost(bookmark[2]) %>" />
+            <input type="hidden" name="bookmark_url" value="<%= bookmark[2] %>">
+            </form>
+        </td> 
           
         <td>
            <form class="rating" method="post" action="/submit_rating" style="justify-content: left;">

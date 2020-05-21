@@ -53,6 +53,5 @@ post '/add_to_history' do
         History.update_date(@visited_bookmark_id, @visit_time)
     end
     
-    puts "#{@user_id} #{@visited_bookmark_id} #{@visit_time} added to history"
     redirect params[:bookmark_url]
 end
