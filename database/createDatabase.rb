@@ -57,8 +57,7 @@ CREATE TABLE IF NOT EXISTS "bookmark_history" (
 	"bookmark_id"	INTEGER,
 	"date"	INTEGER,
 	FOREIGN KEY("user_id") REFERENCES "users"("user_id"),
-	FOREIGN KEY("bookmark_id") REFERENCES "bookmarks"("bookmark_id"),
-	PRIMARY KEY("date","bookmark_id","user_id")
+	FOREIGN KEY("bookmark_id") REFERENCES "bookmarks"("bookmark_id")
 );
 SQL
 
