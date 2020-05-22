@@ -16,20 +16,32 @@ get '/edit_bookmark' do
     erb :edit_bookmark
 end
 
+
 post '/EditBookmark' do
     redirect '/index' unless session[:logged_in]
     
     @bookmark_name = params[:bookmark_name]
     @link = params[:link]
     @description = params[:description]
+    @report_status=params[:active_status]
     
     #date-time format (YYYY/MM/DD HH:MM)
     @last_updated = Time.now.strftime("%Y/%m/%d %H:%M").to_s
     
+   #parses link and adds url scheme to the link if it is missing
+    uri = URI::parse(@link)
+      if uri.scheme.nil? && uri.host.nil?
+        unless uri.path.nil?
+          uri.scheme = "http"
+          uri.host = uri.path
+          uri.path = ""
+        end
+      end
+     @link_parsed = uri.to_s
     
-    Bookmark.update(@bookmark_name, @link, @description, @last_updated, session[:editing_id])
+    Bookmark.update(@bookmark_name, @link_parsed, @description, @last_updated, session[:editing_id], @report_status)
     
-    redirect '/'
+    redirect '/admin_bookmarks'
 end
 
 post '/submit_rating' do
