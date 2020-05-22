@@ -6,6 +6,7 @@
         <th>Link</th>
         <th>Rating</th>
         <th>Last Updated</th>
+        <th>Favourite</th>
         <th>Status</th>
         <th>More Info</th>
     </tr>
@@ -78,7 +79,16 @@
 
         </td>
         <td><%= bookmark[5] %></td>
-         
+         <td><% if Favourite.check_if_favourite(session[:user_id], bookmark[0]) %> 
+            <form class="favourite" method="post" action="/remove_favourite" style="justify-content: left;">
+               <button id="rating" type="submit" name="favourite" value="0" style="color: #ff0000;"><i class="fas fa-heart"></i></button>
+            </form>
+            <% else %> 
+            <form class="favourite" method="post" action="/add_favourite" style="justify-content: left;">
+               <button id="rating" type="submit" name="favourite" value="0" style="color: #ff0000;"><i class="far fa-heart"></i></button>
+            </form>
+            <% end %>
+         </td>
         <td>
            <% case bookmark[6] when 0 %>
                <img src='images/red.png' class="icon" alt="broken link" />
