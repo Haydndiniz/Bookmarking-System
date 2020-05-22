@@ -18,6 +18,16 @@ post '/new_Bookmark' do
     @description = params[:description].strip
     @report_status=2
     
-    Bookmark.new(@bookmark_name, @link, @description, session[:user_id], @last_updated)  
+     uri = URI::parse(@link)
+      if uri.scheme.nil? && uri.host.nil?
+        unless uri.path.nil?
+          uri.scheme = "http"
+          uri.host = uri.path
+          uri.path = ""
+        end
+      end
+      @link_parsed = uri.to_s
+   
+    Bookmark.new(@bookmark_name, @link_parsed, @description, session[:user_id], @last_updated)  
     redirect '/'
 end
