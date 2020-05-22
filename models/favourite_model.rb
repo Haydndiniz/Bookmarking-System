@@ -13,15 +13,4 @@ module Favourite
         return result
     end
    
-   def Favourite.check_if_favourite(user_id, bookmark_id)
-       result = false
-       query = "SELECT * FROM favourites WHERE user_id = ? AND bookmark_id = ?"
-       rows = $db.execute query, user_id, bookmark_id
-       if (rows.count == 1)
-          result = true
-       end
-      
-      return result
-   end 
-   
 end

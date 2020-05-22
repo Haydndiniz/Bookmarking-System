@@ -19,16 +19,6 @@
     <% else %>
         <nav class="sticky"><%= erb :home_header %></nav>
     <% end %>
-   
-   <% flash.keys.each do |type| %>
-
-      <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
-        <strong><%= flash[type] %></strong> 
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-           <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-    <% end %>
 
     <div class="login-dark">
         <form id="login_form" method="post">
@@ -52,9 +42,6 @@
             <a class="forgot" href="/reset_password">Forgot your username or password?</a>
         </form>
     </div>
-     <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <script src="js/script.min.js"></script>
+    
 </body>
 </html>
