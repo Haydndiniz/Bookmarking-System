@@ -45,103 +45,131 @@
     <% end %>
     <!--main content-->
     <table class="table">
-        <thead>
-            <tr>
-                <th>Bookmark Name</th>
-                <th>Link</th>
-                <th>Rating</th>
-                <th>Last Updated</th>
-                <th>Status</th>
-                <th>More Info</th>
-            </tr>
-        </thead>
+  <thead>
+    <tr>
+        <th>No.</th>
+        <th>Bookmark Name</th>
+        <th>Link</th>
+        <th>Rating</th>
+        <th>Last Updated</th>
+       <th>Favourite</th>
+        <th>Status</th>
+        <th>More Info</th>
+    </tr>
+  </thead>
 
-        <tbody>
+  <tbody id="bookmark_table">
  
-            <% @favourite_list.each do |bookmark| %>
-            <tr>
+        <% @favourite_list.each do |bookmark| %>
+      <tr>
 
-                <td><%= bookmark[1] %></td>
-                <td><a class="btn btn-info btn-sm" href="<%= bookmark[2] %>" target="_blank"><%= Bookmark.getHost(bookmark[2]) %></a></td>
-                
-                <td>
-                    <form class="rating" method="post" action="/submit_rating" style="justify-content: left;">
+        <td><%= @bookmark_list.find_index(bookmark) + 1 %></td>
+        <td><%= bookmark[1] %></td>
+          
+         <td>
+            <form class="history" method="post" action="/add_to_history" target="_blank">
+            <input type="hidden" name="bookmark_id" value="<%= bookmark[0] %>"/>
+            <input class="btn btn-info btn-sm" type="submit" value="<%= Bookmark.getHost(bookmark[2]) %>" />
+            <input type="hidden" name="bookmark_url" value="<%= bookmark[2] %>">
+            </form>
+        </td> 
+          
+        <td>
+           <form class="rating" method="post" action="/submit_rating" style="justify-content: left;">
   
-                        <input type="hidden" name="bookmark_id" value="<%= bookmark[0] %>">
-                        <input type="hidden" name="num_ratings" value="<%= bookmark[8] %>">
-                        <input type="hidden" name="current_rating" value="<%= bookmark[7] %>">
-                        <div class ="stars"> 
-                            <% case bookmark[7].to_i when 0 %>
-                               <button id="rating" type="submit" name="stars" value="5">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="4">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="3">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="2">&#9733;</button>
-                               <button id="rating"type="submit" name="stars" value="1">&#9733;</button>
-                            <% when 1 %>
-                               <button id="rating" type="submit" name="stars" value="5">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="4">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="3">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="2">&#9733;</button>
-                               <button id="rating"type="submit" name="stars" value="1" style="color: #fed136;">&#9733;</button>
-                            <% when 2 %>
-                               <button id="rating" type="submit" name="stars" value="5">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="4">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="3">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="2" style="color: #fed136;">&#9733;</button>
-                               <button id="rating"type="submit" name="stars" value="1" style="color: #fed136;">&#9733;</button>
-                            <% when 3 %>
-                               <button id="rating" type="submit" name="stars" value="5">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="4">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="3" style="color: #fed136;">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="2" style="color: #fed136;">&#9733;</button>
-                               <button id="rating"type="submit" name="stars" value="1" style="color: #fed136;">&#9733;</button>
-                                <% when 4 %>
-                               <button id="rating" type="submit" name="stars" value="5" >&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="4" style="color: #fed136;">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="3" style="color: #fed136;">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="2" style="color: #fed136;">&#9733;</button>
-                               <button id="rating"type="submit" name="stars" value="1" style="color: #fed136;">&#9733;</button>
-                            <% when 5 %>
-                               <button id="rating" type="submit" name="stars" value="5" style="color: #fed136;">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="4" style="color: #fed136;">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="3" style="color: #fed136;">&#9733;</button>
-                               <button id="rating" type="submit" name="stars" value="2" style="color: #fed136;">&#9733;</button>
-                               <button id="rating"type="submit" name="stars" value="1" style="color: #fed136;">&#9733;</button>
-                            <% else %>
-                            <% end %>  
-                         </div>
-                         <%= bookmark[8] %>
-                     </form>
-
-                </td>
-                <td><%= bookmark[5] %></td>
-         
-                <td>
-                    <% case bookmark[6] when 0 %>
-                        <img src='images/red.png' class="icon" alt="broken link" />
+              <input type="hidden" name="bookmark_id" value="<%= bookmark[0] %>">
+              <input type="hidden" name="num_ratings" value="<%= bookmark[8] %>">
+              <input type="hidden" name="current_rating" value="<%= bookmark[7] %>">
+                 <div class ="stars"> 
+                    <% case bookmark[7].to_i when 0 %>
+                       <button id="rating" type="submit" name="stars" value="5">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="4">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="3">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="2">&#9733;</button>
+                       <button id="rating"type="submit" name="stars" value="1">&#9733;</button>
                     <% when 1 %>
-                        <img src='images/wrench.png' class="icon" alt="link under review"/>
+                        <button id="rating" type="submit" name="stars" value="5">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="4">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="3">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="2">&#9733;</button>
+                       <button id="rating"type="submit" name="stars" value="1" style="color: #fed136;">&#9733;</button>
                     <% when 2 %>
-                        <img src='images/green.png' class="icon" alt="working link"/>
+                       <button id="rating" type="submit" name="stars" value="5">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="4">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="3">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="2" style="color: #fed136;">&#9733;</button>
+                       <button id="rating"type="submit" name="stars" value="1" style="color: #fed136;">&#9733;</button>
+                    <% when 3 %>
+                       <button id="rating" type="submit" name="stars" value="5">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="4">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="3" style="color: #fed136;">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="2" style="color: #fed136;">&#9733;</button>
+                       <button id="rating"type="submit" name="stars" value="1" style="color: #fed136;">&#9733;</button>
+                    <% when 4 %>
+                       <button id="rating" type="submit" name="stars" value="5" >&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="4" style="color: #fed136;">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="3" style="color: #fed136;">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="2" style="color: #fed136;">&#9733;</button>
+                       <button id="rating"type="submit" name="stars" value="1" style="color: #fed136;">&#9733;</button>
+                    <% when 5 %>
+                       <button id="rating" type="submit" name="stars" value="5" style="color: #fed136;">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="4" style="color: #fed136;">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="3" style="color: #fed136;">&#9733;</button>
+                       <button id="rating" type="submit" name="stars" value="2" style="color: #fed136;">&#9733;</button>
+                       <button id="rating"type="submit" name="stars" value="1" style="color: #fed136;">&#9733;</button>
                     <% else %>
-                    <% end %>
-                    <% case bookmark[6] when 2 %>
-                        <a style="color:grey; text-decoration:underline; font-size:13px" href='/report/<%= bookmark[0] %>'>Report</a>
-                    <% end %>
-                </td>
+                    <% end %>  
+                 </div>
+               (<%= bookmark[8] %>)  
+         </form>
+
+        </td>
+        <td><%= bookmark[5] %></td>
          
-                <td>
-                    <a tabindex="0" class="btn btn-sm btn-info" role="button"  data-html="true" data-toggle="popover" data-trigger="focus" title="<%= bookmark[1] %>"
-                       data-content="<div><b>Boomark ID: <%= bookmark[0] %></b></div>
-                                     <div><b>Description: </b><%= bookmark[4] %> </div>
-                                     <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %> </div>
-                                     ">More Info</a>          
-                </td>
+         <td><% if Favourite.check_if_favourite(session[:user_id], bookmark[0]) %> 
+            <form class="favourite" method="post" action="/remove_favourite" style="justify-content: left;">
+               <input type="hidden" name="bookmark_id" value="<%= bookmark[0] %>"/>
+               <button id="rating" type="submit"   style="color: #ff0000;"><i class="fas fa-heart"></i></button>
+            </form>
+            <% else %> 
+            <form class="favourite" method="post" action="/add_favourite" style="justify-content: left;">
+               <input type="hidden" name="bookmark_id" value="<%= bookmark[0] %>"/>
+               <button id="rating" type="submit"  style="color: #ff0000;"><i class="far fa-heart"></i></button>
+            </form>
+            <% end %>
+         </td>
+
+        <td>
+           <% case bookmark[6] when 0 %>
+               <img src='images/red.png' class="icon" alt="broken link" />
+           <% when 1 %>
+               <img src='images/wrench.png' class="icon" alt="link under review"/>
+           <% when 2 %>
+               <img src='images/green.png' class="icon" alt="working link"/>
+           <% else %>
+           <% end %>
+           <% case bookmark[6] when 2 %>
+               <a style="color:grey; text-decoration:underline; font-size:13px" href='/report/<%= bookmark[0] %>'>Report</a>
+           <% end %>
+         </td>
+          
+        
          
-             </tr>
-             <% end %>
-        </tbody>
-    </table>
+         <td id="more_info">
+             <a tabindex="0" class="btn btn-sm btn-info" role="button"  data-html="true" data-toggle="popover" data-trigger="focus" title="<%= bookmark[1] %>"
+               data-content="<div><b>Boomark ID: <%= bookmark[0] %></b></div>
+                             <div><b>Description: </b><%= bookmark[4] %> </div>
+                             <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %></div>
+                             <div><b>Department tags: </b><%= Bookmark.getTags(bookmark[0]) %></div>
+                             ">More Info</a>
+             
+         </td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+
+
     
     <!--footer-->
     <script>

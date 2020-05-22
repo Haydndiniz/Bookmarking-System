@@ -2,7 +2,7 @@ module Favourite
 
     def Favourite.new(user_id, bookmark_id)
         result = false
-        insert = "INSERT INTO favourites (user_id, bookmark_id) VALUES (?,?,?)"
+        insert = "INSERT INTO favourites (user_id, bookmark_id) VALUES (?,?)"
         begin
             $db.execute insert, user_id, bookmark_id
             result = true
@@ -13,4 +13,25 @@ module Favourite
         return result
     end
    
+   def Favourite.check_if_favourite(user_id, bookmark_id)
+       result = false
+       query = "SELECT * FROM favourites WHERE user_id = ? AND bookmark_id = ?"
+       rows = $db.execute query, user_id, bookmark_id
+       if (rows.count == 1)
+          result = true
+       end
+      
+      return result
+   end 
+
+   def Favourite.remove(user_id, bookmark_id)
+       result = false
+       query = "DELETE FROM favourites WHERE user_id = ? AND bookmark_id = ?"
+       rows = $db.execute query, user_id, bookmark_id
+       if (rows.count == 1)
+          result = true
+       end
+      
+      return result
+   end 
 end
