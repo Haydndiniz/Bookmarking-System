@@ -20,7 +20,7 @@
         <td><%= @bookmark_list.find_index(bookmark) + 1 %></td>
         <td><%= bookmark[1] %></td>
           
-         <td>
+        <td>
             <form class="history" method="post" action="/add_to_history" target="_blank">
             <input type="hidden" name="bookmark_id" value="<%= bookmark[0] %>"/>
             <input class="btn btn-info btn-sm" type="submit" value="<%= Bookmark.getHost(bookmark[2]) %>" />
@@ -102,7 +102,8 @@
          </td>
          
          <td id="more_info">
-             <a tabindex="0" class="btn btn-sm btn-info" role="button"  data-html="true" data-toggle="popover" data-trigger="focus" title="<%= bookmark[1] %>"
+             <a tabindex="0" class="btn btn-sm btn-info" role="button"  data-html="true" data-toggle="popover" data-trigger="focus"
+               title="<%= bookmark[1] %>"
                data-content="<div><b>Boomark ID: <%= bookmark[0] %></b></div>
                              <div><b>Description: </b><%= bookmark[4] %> </div>
                              <div><b>Creator: </b><%= ($db.execute "SELECT email FROM users WHERE user_id = ?",bookmark[4])[0][0] %></div>
