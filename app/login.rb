@@ -12,7 +12,6 @@ end
 #get login request and redirect to login page
 get '/login' do
     redirect '/index' if session[:logged_in]
-    $users_signed_in+1
     erb :login
 end
 
