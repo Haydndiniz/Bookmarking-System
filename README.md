@@ -1,4 +1,3 @@
-
 # ACME CORP: Ruby x Sinatra Project
 
 ## System setup before running
@@ -28,14 +27,14 @@ To install dependencies, navigate into the root directory of the app using:
 If you type “ls” you should see folders and files, particularly a file that says rakefile.
 Then type:
 ```bash
-	Rake install
+	rake install
 ```	
 This command will install all gem dependencies and create the database.
 
 ### 3 Running the app
 To run the app, type the following command:
 ```bash
-	Rake run
+	rake run
 ```
 This will start the web server which is accessible at
 ```bash

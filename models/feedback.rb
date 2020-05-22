@@ -2,7 +2,8 @@ module Feedback
     
     def Feedback.new(user_id, date_time, feedback_topic, feedback, bookmark_id)
         result = false
-        insert = "INSERT INTO feedback (user_id, date_time, feedback_topic, feedback, bookmark_id) VALUES(?, ?, ?, ?, ?);"
+        insert = "INSERT INTO feedback (user_id, date_time, feedback_topic, feedback, bookmark_id) 
+                    VALUES(?, ?, ?, ?, ?);"
         begin
             $db.execute insert, user_id, date_time, feedback_topic, feedback, bookmark_id
             result = true

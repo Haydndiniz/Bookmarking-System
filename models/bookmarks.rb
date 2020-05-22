@@ -30,11 +30,9 @@ module Bookmark
             tagsString = tagsString.chop
             tagsString = tagsString.chop
             
-            #puts tags
-            #puts tagsString
-            
             #build the query
-            query = "SELECT DISTINCT bookmarks.bookmark_id, bookmark_name, link, description, creator, last_updated, report_status, rating, num_ratings 
+            query = "SELECT DISTINCT bookmarks.bookmark_id, bookmark_name, link, description,
+                    creator, last_updated, report_status, rating, num_ratings 
                     FROM bookmarks 
                     JOIN tagged_bookmarks ON bookmarks.bookmark_id = tagged_bookmarks.bookmark_id 
                     JOIN tags ON tagged_bookmarks.tag_id = tags.tag_id 

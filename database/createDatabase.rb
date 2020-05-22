@@ -38,8 +38,7 @@ CREATE TABLE IF NOT EXISTS "tagged_bookmarks" (
 	"bookmark_id"	INTEGER,
 	"tag_id"	INTEGER,
 	FOREIGN KEY("tag_id") REFERENCES "tags"("tag_id"),
-	FOREIGN KEY("bookmark_id") REFERENCES "bookmarks"("bookmark_id"),
-	PRIMARY KEY("bookmark_id","tag_id")
+	FOREIGN KEY("bookmark_id") REFERENCES "bookmarks"("bookmark_id")
 );
 SQL
 
